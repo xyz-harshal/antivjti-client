@@ -2,6 +2,7 @@
 import PostTweets from "./components/postTweet"
 import ReadTweet from "./components/readTweet"
 import {useState,useEffect} from "react"
+import Cookies from "js-cookie";
 import axios from "axios";
 type incDataType={
   _id:String,

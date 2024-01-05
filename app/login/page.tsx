@@ -15,7 +15,14 @@ export default function Login() {
     try {
       if (loginData.email.endsWith('.vjti.ac.in')) {
         let response = await axios.post('http://localhost:4000/login', loginData);
-        console.log(response.data);
+        switch (response.data) {
+          case "loggedIN": alert("logged in nicely")
+            break;
+          case "NOemail": alert("no email found kindly register yourself")
+            break;
+          case "NOpassword": alert("incorresct password try again")
+            break;
+        }
       }
       else {
         console.log(false);

@@ -1,12 +1,12 @@
 "use client";
 import axios from "axios";
 import { useState } from "react";
+import Cookies from "js-cookie";
 type RegisterDataType = {
   email: string,
   password: string
 }
 export default function Register() {
-
   let [registeredData, setRegisteredData] = useState<RegisterDataType>({
     email: "",
     password: ""
@@ -15,7 +15,7 @@ export default function Register() {
     try {
       if (registeredData.email.endsWith('.vjti.ac.in')) {
         let response = await axios.post('http://localhost:4000/register', registeredData);
-        console.log(response.data);
+        Cookies.set('user', response.data.token);
       }
       else {
         console.log(false);
