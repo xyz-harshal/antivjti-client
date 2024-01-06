@@ -1,33 +1,39 @@
-"use client";
-import PostTweets from "./components/postTweet"
-import ReadTweet from "./components/readTweet"
-import {useState,useEffect} from "react"
+"use client"
+import {useState,useEffect} from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
-type incDataType={
-  _id:String,
-  userID:String,
-  post:String
-};
+import { useRouter } from "next/navigation";
+import {usePresenceStore} from "./store/store"
 export default function Home() {
-  let [incData,setIncData]=useState<incDataType[]>()
+  let router=useRouter();
+  let [isActive,setActive]=useState<boolean>()
+  // if(isActive==true){
+  //   let data =usePresenceStore((state)=>state.toggle)
+  // }
   useEffect(()=>{
-    let handleGet=async()=>{
+    let authCheck=async()=>{
+      let headers={
+        'Content-Type': 'application/json',
+        'Authorization':Cookies?.get('user'),
+      }
       try{
-        let res=(await axios.get("http://localhost:4000/get"));
-        setIncData(res.data);
+        let res=await axios.get("http://localhost:4000/homeAuth",{headers});
+        if(res.data){
+          setActive(true);
+          // console.log(usePresenceStore((state)=>state.active))
+          router.push('/tweets');
+        }
+       
       }
       catch(e:any){
-        console.log(e.message)
+        console.log(e.message);
       }
     }
-    handleGet();
-  },[]);
+    authCheck();
+  },[])
   return (
-    <div className="mainPg mx-96">
-      <PostTweets />
-      {incData?.map((e)=><ReadTweet userId={e.userID} post={e.post} _id={e._id} key={e._id}/>)}
-    </div>
-
+  <div className="home">
+    <p>This is home route</p>
+  </div>
   )
 }
