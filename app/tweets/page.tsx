@@ -8,7 +8,8 @@ import axios from "axios";
 type incDataType = {
   _id: String,
   userID: String,
-  post: String
+  post: String,
+  username:String
 };
 export default function Tweets() {
   let router=useRouter();
@@ -38,7 +39,7 @@ export default function Tweets() {
   return (
     <div className="mainPg mx-96">
       <PostTweets />
-      {incData?.map((e) => <ReadTweet userId={e.userID} post={e.post} _id={e._id} key={e._id} />)}
+      {incData?.map((e) => <ReadTweet userId={e.username} post={e.post} _id={e._id} key={e._id} />)}
     </div>
 
   )

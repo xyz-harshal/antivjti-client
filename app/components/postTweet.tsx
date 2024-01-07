@@ -1,12 +1,13 @@
 "use client";
 import { useState, ChangeEvent } from "react";
+import Cookies from "js-cookie";
 import axios from "axios";
 type postDataType={
-  userId:string,
+  userId:any,
   post:string
 }
 export default function PostTweet() {
-  let userId="89P13";
+  let userId=Cookies.get('user');
   let [postData,setPostData]=useState<postDataType>({
     userId:"",
     post:""
@@ -34,7 +35,6 @@ export default function PostTweet() {
   let handlePost=async()=>{
     try{
       await axios.post("http://localhost:4000/post",postData);
-      console.log("success on posting");
     }
     catch(e:any){
       console.log(e.message);
