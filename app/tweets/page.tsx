@@ -5,13 +5,17 @@ import { useState, useEffect } from "react"
 import Cookies from "js-cookie"
 import { useRouter } from "next/navigation"
 import axios from "axios";
+import {useSelector,useDispatch } from "react-redux";
+import { AppDispatch,RootState } from "@/redux/store";
+import { counter } from "@/redux/features/reloadToggle";
 type incDataType = {
-  _id: String,
-  userID: String,
-  post: String,
-  username:String
+  _id: string,
+  userID: string,
+  post: string,
+  username:string
 };
 export default function Tweets() {
+  let selector = useSelector((state: RootState) => state.toggle.value);
   let router=useRouter();
   let [incData, setIncData] = useState<incDataType[]>()
   let headers = {
@@ -35,11 +39,11 @@ export default function Tweets() {
       }
     }
     handleGet();
-  }, []);
+  }, [selector]);
   return (
     <div className="mainPg mx-96">
       <PostTweets />
-      {incData?.map((e) => <ReadTweet userId={e.username} post={e.post} _id={e._id} key={e._id} />)}
+      {incData?.map((e) => <ReadTweet username={e.username} post={e.post} _id={e._id} key={e._id} hier={true} />)}
     </div>
 
   )
