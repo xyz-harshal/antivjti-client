@@ -1,5 +1,6 @@
 "use client"
 import PostTweets from "../components/postTweet"
+import mongoose from "mongoose";
 import ReadTweet from "../components/readTweet"
 import { useState, useEffect } from "react"
 import Cookies from "js-cookie"
@@ -12,7 +13,9 @@ type incDataType = {
   _id: string,
   userID: string,
   post: string,
-  username:string
+  username:string,
+  upvoteIds:[mongoose.Schema.Types.ObjectId],
+  downvoteIds:[mongoose.Schema.Types.ObjectId]
 };
 export default function Tweets() {
   let selector = useSelector((state: RootState) => state.toggle.value);
@@ -43,7 +46,7 @@ export default function Tweets() {
   return (
     <div className="mainPg mx-96">
       <PostTweets />
-      {incData?.map((e) => <ReadTweet username={e.username} post={e.post} _id={e._id} key={e._id} hier={true} />)}
+      {incData?.map((e) => <ReadTweet upvoteIds={e.upvoteIds} downvoteIds={e.downvoteIds} username={e.username} post={e.post} _id={e._id} key={e._id} hier={true} />)}
     </div>
 
   )
