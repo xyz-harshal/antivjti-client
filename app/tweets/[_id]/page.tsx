@@ -26,7 +26,7 @@ export default function Page({ params }: { params: { _id: string } }) {
     let [replyData,setReplyData]=useState<replyDataType[]>()
     useEffect(()=>{
         let fetch=async()=>{
-          let response1= await axios.post('http://localhost:4000/getSpecific',{_id:params._id})
+          let response1= await axios.post('http://localhost:4000/getSpecificTweet',{_id:params._id})
           setIncData(response1.data)
           let response2=await axios.post('http://localhost:4000/getReplies',{_id:params._id})
           setReplyData(response2.data)
@@ -35,9 +35,9 @@ export default function Page({ params }: { params: { _id: string } }) {
     },[selector])
     return (
         <div className="mx-96">
-            <ReadTweet username={incData?.username} post={incData?.post} _id={incData?._id} hier={false} />
+            <ReadTweet username={incData?.username} post={incData?.post} _id={incData?._id} hier={false}  />
             <ReplyTweet userId={incData?.userID} postId={incData?._id} />
-          {replyData?.map((e)=><ReadTweet username={e.writterName} post={e.reply} _id={e._id} hier={false} />)}
+          {replyData?.map((e)=><ReadTweet username={e.writterName} post={e.reply} _id={e._id} hier={false} key={e._id} />)}
         </div>
     )
   }

@@ -26,7 +26,7 @@ let ReadTweet: FC<incProps> = ({
   upvoteIds,
   downvoteIds,
 }) => {
-    const [votes, setVotes] = useState(upvoteIds.length - downvoteIds.length);
+    const [votes, setVotes] = useState(upvoteIds?.length - downvoteIds?.length);
     const data = { userID: Cookies.get("user"), postID: _id };
 
   let router = useRouter();
@@ -54,7 +54,7 @@ let ReadTweet: FC<incProps> = ({
                 "bg-black text-white cursor-pointer transition-all ease-in hover:scale-125 active:scale-90 focus:outline-none focus:ring focus:ring-violet-300"
               }
 />
-            <p>{votes}</p>
+            <p>{hier?votes:""}</p>
             <PiArrowFatDown size={"1.4rem"} onClick={handleArrowDownClick}
               className={
                 "bg-black text-white cursor-pointer transition-all ease-in hover:scale-125 active:scale-90 focus:outline-none focus:ring focus:ring-violet-300"

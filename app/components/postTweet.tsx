@@ -1,51 +1,24 @@
-"use client";
-import { useState, ChangeEvent } from "react";
+"use client"
+import { useState, ChangeEvent } from "react"
+import { usePostTweet } from "@/hooks/usePostTweet"
 import Cookies from "js-cookie";
-import axios from "axios";
-import { AppDispatch, RootState } from "@/redux/store";
+import { tweetPostDataType } from "@/types/types";
 import { counter } from "@/redux/features/reloadToggle";
-import { useSelector, useDispatch } from "react-redux";
-type postDataType={
-  userId:any,
-  post:string
-}
 export default function PostTweet() {
-  let dispatch = useDispatch<AppDispatch>();
-  let userId=Cookies.get('user')
-  let [postData,setPostData]=useState<postDataType>({
-    userId:"",
-    post:""
-  });
-  const [tweet, setTweet] = useState<string>('');
-  const [textareaHeight, setTextareaHeight] = useState<number>(40);
+  let userId = Cookies.get('user')
+  let { tweet, textareaHeight,updateTextareaHeight,setTweet, handlePost } = usePostTweet("postTweets")
+  let [postData, setPostData] = useState<tweetPostDataType>();
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setTweet(event.target.value);
     updateTextareaHeight(event.target);
     setPostData({
-      userId:userId,
-      post:event.target.value
+        userId: userId,
+        post: event.target.value
     });
-  };
-  const updateTextareaHeight = (target: HTMLTextAreaElement) => {
-    const minTextareaHeight = 40;
-    const maxTextareaHeight = 200;
-    const newHeight = Math.min(
-      maxTextareaHeight,
-      Math.max(minTextareaHeight, target.scrollHeight)
-    );
-    setTextareaHeight(newHeight);
-  };
-
-  let handlePost=async()=>{
-    try{
-      await axios.post("http://localhost:4000/post",postData);
-      dispatch(counter())
-      setTweet("")
-    }
-    catch(e:any){
-      console.log(e.message);
-    }
-  }
+};
+let handleTweetPost=()=>{
+  handlePost(postData,counter)
+}
   return (
     <div className="postTweet flex flex-col items-center px-44">
       <div className="w-full flex flex-row justify-center my-borderCol py-3">
@@ -60,7 +33,7 @@ export default function PostTweet() {
           placeholder="Tell us what happend today!"
         />
         <div className="self-end ">
-          <button className="my-borderCol px-4 py-1 rounded-xl hover:bg-white hover:text-black" onClick={handlePost}>Post</button>
+          <button className="my-borderCol px-4 py-1 rounded-xl hover:bg-white hover:text-black" onClick={handleTweetPost}>Post</button>
         </div>
       </div>
 
