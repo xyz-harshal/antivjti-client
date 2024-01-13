@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import mongoose from "mongoose";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { stripVTControlCharacters } from "util";
+
 
 interface incProps {
   username: string | undefined;
@@ -26,7 +28,6 @@ let ReadTweet: FC<incProps> = ({
   downvoteIds,
   isReply
 }) => {
-<<<<<<< HEAD
   if (upvoteIds === undefined || downvoteIds === undefined){
     return(<div>loading</div>)
   }else{
@@ -50,10 +51,6 @@ let ReadTweet: FC<incProps> = ({
   useEffect(() => {
     state_value_setter();
   }, []);
-=======
-    const [votes, setVotes] = useState(upvoteIds?.length - downvoteIds?.length);
-    const data = { userID: Cookies.get("user"), postID: _id };
->>>>>>> 26ff6bb951eecef81244da97935e74222c453820
 
   let router = useRouter();
   const handleArrowUpClick = async () => {
@@ -125,18 +122,16 @@ let ReadTweet: FC<incProps> = ({
               className={
                 "bg-black text-white cursor-pointer transition-all ease-in hover:scale-125 active:scale-90 focus:outline-none focus:ring focus:ring-violet-300"
               }
-<<<<<<< HEAD
             />
             <p>{votes}</p>
             <PiArrowFatDown
               size={"1.4rem"}
               color={state === -1 ? "orange" : "white"}
               onClick={handleArrowDownClick}
-=======
 />
             <p>{hier?votes:""}</p>
             <PiArrowFatDown size={"1.4rem"} onClick={handleArrowDownClick}
->>>>>>> 26ff6bb951eecef81244da97935e74222c453820
+
               className={
                 "bg-black text-white cursor-pointer transition-all ease-in hover:scale-125 active:scale-90 focus:outline-none focus:ring focus:ring-violet-300"
               }
