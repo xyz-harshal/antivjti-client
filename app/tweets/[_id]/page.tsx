@@ -32,7 +32,7 @@ export default function Page({ params }: { params: { _id: string } }) {
   useEffect(() => {
     let fetch = async () => {
       try {
-        let response1 = await axios.post("http://localhost:4000/getSpecific", {
+        let response1 = await axios.post("http://localhost:4000/getSpecificTweet", {
           _id: params._id,
         }).then((res) =>{setIncData2(res.data);
         console.log(res.data.upvoteIds)});
@@ -58,7 +58,6 @@ export default function Page({ params }: { params: { _id: string } }) {
         downvoteIds = {incData2?.downvoteIds}
         isReply={false}
       />
-      {/* <p>{incData2?.upvoteIds.length}</p> */}
       <ReplyTweet userId={incData2?.userID} postId={incData2?._id} />
       {replyData?.map((e, i) => (
         <ReadTweet
@@ -69,6 +68,7 @@ export default function Page({ params }: { params: { _id: string } }) {
           upvoteIds={e?.upvoteIds}
           downvoteIds = {e?.downvoteIds}
           isReply={true}
+          key={i}
         />
       ))}
     </div>
