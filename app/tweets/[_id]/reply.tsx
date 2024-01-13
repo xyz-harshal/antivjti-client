@@ -9,10 +9,9 @@ interface incProps{
     postId:any
 }
 let ReplyTweet:FC<incProps>=({userId,postId})=> {
-  let { tweet, textareaHeight,updateTextareaHeight,setTweet, handlePost } = usePostTweet("reply")
+  let { textareaHeight,updateTextareaHeight, handlePost } = usePostTweet("reply")
   let [postData,setPostData]=useState<replyPostDataType>()
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setTweet(event.target.value)
     updateTextareaHeight(event.target)
     setPostData({
       userId:userId,
@@ -29,7 +28,7 @@ let ReplyTweet:FC<incProps>=({userId,postId})=> {
     <div className="postTweet flex flex-col items-center px-44">
       <div className="flex flex-col items-center gap-4 my-borderCol px-8 py-4 w-full">
         <textarea
-          value={tweet}
+          value={postData?.reply}
           onChange={handleInputChange}
           style={{ height: textareaHeight }}
           className="bg-black outline-none resize-none w-full post-input my-6 overflow-y-hidden"

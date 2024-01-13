@@ -15,7 +15,7 @@ export default function Tweets() {
   return (
     <div className="mainPg mx-96">
       <PostTweets />
-      {incData?.map((e) => <ReadTweet upvoteIds={e.upvoteIds} downvoteIds={e.downvoteIds} username={e.username} post={e.post} _id={e._id} key={e._id} hier={true} isReply={false}/>)}
+      {incData?.map((e) => <ReadTweet upvoteIds={e.upvoteIds} downvoteIds={e.downvoteIds} username={e.username} img={e.img} post={e.post} _id={e._id} key={e._id} hier={true} isReply={false}/>)}
     </div>
   )
 }

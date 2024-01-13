@@ -9,6 +9,7 @@ import axios from "axios";
 
 interface incProps {
   username: string | undefined;
+  img:string | undefined,
   post: string | undefined;
   _id: string | undefined;
   hier: boolean | undefined;
@@ -20,6 +21,7 @@ interface incProps {
 let ReadTweet: FC<incProps> = ({
   username,
   post,
+  img,
   _id,
   hier,
   upvoteIds,
@@ -113,6 +115,7 @@ let ReadTweet: FC<incProps> = ({
           >
             <p>{username}</p>
             <p>{post}</p>
+          <img src={img} alt=""  />
           </div>
           <div className="flex flex-row gap-16 px-8 items-center">
             <div className="votes flex flex-row gap-3 items-center">
