@@ -11,6 +11,7 @@ type postDataType={
   postId:any,
   reply:string,
   writterId:any
+  
 }
 interface incProps{
     userId:any,

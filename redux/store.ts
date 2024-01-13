@@ -2,10 +2,11 @@ import {configureStore} from "@reduxjs/toolkit";
 // import { counter } from "./features/reloadToggle";
 import toggleReducer from "./features/reloadToggle"
 import toggleReducer2 from "./features/reload2Toggle"
+
 export const store=configureStore({
     reducer:{
         toggle:toggleReducer ,
-        toggle2:toggleReducer2
+        toggle2:toggleReducer2,
     },
 });
 
