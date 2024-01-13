@@ -12,11 +12,11 @@ export const toggle=createSlice({
     name:"toggle",
     initialState,
     reducers:{
-        counter:(state)=>{
+        counter2:(state)=>{
             state.value=!state.value;
         }
     }
 });
 
-export const {counter} =toggle.actions;
+export const {counter2} =toggle.actions;
 export default toggle.reducer;

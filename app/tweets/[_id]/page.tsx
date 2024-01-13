@@ -1,6 +1,6 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
+"use client"
+import { useState,useEffect } from "react"
+import axios from "axios"
 import ReadTweet from "@/app/components/readTweet";
 import ReplyTweet from "./reply";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,23 +26,9 @@ type replyDataType = {
   downvoteIds: [mongoose.Schema.Types.ObjectId];
 };
 export default function Page({ params }: { params: { _id: string } }) {
-  let [incData2, setIncData2] = useState<incDataType>(
-    // _id: "",
-    // userID: "",
-    // post: "",
-    // username: "",
-    // upvoteIds:[],
-    // downvoteIds: [],
-  );
-  let [replyData, setReplyData] = useState<replyDataType[]>(
-  //   _id: "",
-  // userId: "",
-  // postId: "",
-  // reply: "",
-  // writterId: "",
-  // writterName: "",
-);
   let selector = useSelector((state: RootState) => state.toggle2.value);
+  let [incData2,setIncData2]=useState<incDataType>();
+  let [replyData,setReplyData]=useState<replyDataType[]>();
   useEffect(() => {
     let fetch = async () => {
       try {
