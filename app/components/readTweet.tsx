@@ -4,120 +4,41 @@ import { FaRegComment } from "react-icons/fa";
 import { PiArrowFatDown, PiArrowFatUp } from "react-icons/pi";
 import { useRouter } from "next/navigation";
 import mongoose from "mongoose";
-import Cookies from "js-cookie";
-import axios from "axios";
+import { useHandleUpArrow } from "@/hooks/useHandleVote";
 
 interface incProps {
   username: string | undefined;
-  img:string | undefined,
+  img: string | undefined,
   post: string | undefined;
-  _id: string | undefined;
+  replies: number | undefined,
+  _id: string;
   hier: boolean | undefined;
   upvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
   downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
   isReply: boolean;
 }
 
-let ReadTweet: FC<incProps> = ({
-  username,
-  post,
-  img,
-  _id,
-  hier,
-  upvoteIds,
-  downvoteIds,
-  isReply
-}) => {
-  if (upvoteIds === undefined || downvoteIds === undefined) {
+let ReadTweet: FC<incProps> = (data) => {
+  if (data.upvoteIds == undefined || data.downvoteIds == undefined) {
     return (<div>loading</div>)
   } else {
-    const [votes, setVotes] = useState(upvoteIds.length - downvoteIds.length);
-    const [state, setState] = useState(0);
-    const data = { userID: Cookies.get("user"), postID: _id };
-    const state_value_setter = async () => {
-      if (isReply) {
-        await axios
-          .post("http://localhost:4000/reply1/vote/check", data)
-          .then((res) => {
-            setState(res.data.value);
-          });
-      } else {
-        await axios
-          .post("http://localhost:4000/vote/check", data)
-          .then((res) => {
-            setState(res.data.value);
-          });
-      }
-    };
+    let { handleArrowUpClick, handleArrowDownClick, state_value_setter, votes, state } = useHandleUpArrow(data.upvoteIds, data.downvoteIds, data.isReply, data._id)
+    let router = useRouter();
     useEffect(() => {
       state_value_setter();
     }, []);
-
-    let router = useRouter();
-    const handleArrowUpClick = async () => {
-      if (isReply) {
-        try {
-          await axios
-            .post("http://localhost:4000/reply1/vote/up", data)
-            .then(async (res: any) => {
-              setVotes(res.data.upvoteIds.length - res.data.downvoteIds.length);
-              state_value_setter();
-            });
-        } catch (e: any) {
-          console.log(e.message);
-        }
-      } else {
-        try {
-          await axios
-            .post("http://localhost:4000/vote/up", data)
-            .then(async (res: any) => {
-              setVotes(res.data.upvoteIds.length - res.data.downvoteIds.length);
-              state_value_setter();
-            });
-        } catch (e: any) {
-          console.log(e.message);
-        }
-      }
-    };
-    const handleArrowDownClick = async () => {
-      if (isReply) {
-        try {
-          await axios
-            .post("http://localhost:4000/reply1/vote/down", data)
-            .then(async (res: any) => {
-              setVotes(res.data.upvoteIds.length - res.data.downvoteIds.length);
-              state_value_setter();
-            });
-        } catch (e: any) {
-          console.log(e.message);
-        }
-      } else {
-        try {
-          await axios
-            .post("http://localhost:4000/vote/down", data)
-            .then(async (res: any) => {
-              setVotes(res.data.upvoteIds.length - res.data.downvoteIds.length);
-              state_value_setter();
-            });
-        } catch (e: any) {
-          console.log(e.message);
-        }
-      }
-    };
-
-
     return (
       <div className="readTweet px-44">
         <div className="flex flex-col my-borderCol pb-4">
           <div
-            className="flex flex-col px-8 py-4 gap-2 cursor-pointer"
-            onClick={() => (hier ? router.push(`/tweets/${_id}`) : "")}
+            className="flex flex-col px-8 py-4 gap-2 cursor-pointer "
+            onClick={() => (data.hier ? router.push(`/tweets/${data._id}`) : "")}
           >
-            <p>{username}</p>
-            <p>{post}</p>
-          <img src={img} alt=""  />
+            <p>{data.username}</p>
+            <p className="postTag">{data.post}</p>
+            <img src={data.img} alt="" />
           </div>
-          <div className="flex flex-row gap-16 px-8 items-center">
+          <div className="flex flex-row gap-12 px-8 items-center">
             <div className="votes flex flex-row gap-3 items-center">
               <PiArrowFatUp
                 size={"1.4rem"}
@@ -134,7 +55,11 @@ let ReadTweet: FC<incProps> = ({
                 onClick={handleArrowDownClick}
               />
             </div>
-            {hier ? <FaRegComment /> : ""}
+            <div className="flex flex-row justify-center items-center gap-3">
+              <p>{data.replies}</p>
+              <FaRegComment />
+            </div>
+
           </div>
         </div>
       </div>

@@ -31,3 +31,7 @@ body {
 .post-input{
     border-bottom: 1px solid rgba(255, 255, 255, 0.125) ;
 }
+.postTag{
+  text-overflow: unset;
+  word-wrap: break-word;
+}

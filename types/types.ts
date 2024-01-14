@@ -13,6 +13,7 @@ export type tweetsMapDataType = {
     userID: string,
     post: string,
     username: string,
+    replies:string[]
     img:string,
     upvoteIds: [mongoose.Schema.Types.ObjectId],
     downvoteIds: [mongoose.Schema.Types.ObjectId]
