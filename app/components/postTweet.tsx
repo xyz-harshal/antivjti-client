@@ -39,9 +39,9 @@ export default function PostTweet() {
     })
   }
   return (
-    <div className="postTweet flex flex-col items-center px-44">
+    <div className="postTweet flex flex-col items-center px-0 sm:px-6 md:px-12 lg:px-24 xl:px-36 2xl:px-44">
       <div className="w-full flex flex-row justify-center my-borderCol py-3">
-        <p>For you</p>
+        <p>VJTI SOCIALS</p>
       </div>
       <div className="flex flex-col items-center gap-4 my-borderCol px-8 py-4 w-full">
         <textarea

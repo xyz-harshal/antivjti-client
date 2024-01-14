@@ -51,7 +51,7 @@ export default function Page({ params }: { params: { _id: string } }) {
     fetch();
   }, [selector]);
   return (
-    <div className="mx-96">
+    <div className="mx-0 sm:mx-0 md:mx-28 lg:mx-48 xl:mx-72 2xl:mx-96">
       <ReadTweet
         username={incData2?.username}
         post={incData2?.post}

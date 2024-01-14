@@ -47,7 +47,7 @@ let ReplyTweet: FC<incProps> = ({ userId, postId}) => {
     })
   }
   return (
-    <div className="postTweet flex flex-col items-center px-44">
+    <div className="postTweet flex flex-col items-center px-0 sm:px-6 md:px-12 lg:px-24 xl:px-36 2xl:px-44">
       <div className="flex flex-col items-center gap-4 my-borderCol px-8 py-4 w-full">
         <textarea
           value={postData?.reply}

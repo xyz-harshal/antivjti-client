@@ -28,7 +28,7 @@ let ReadTweet: FC<incProps> = (data) => {
       state_value_setter();
     }, []);
     return (
-      <div className="readTweet px-44">
+      <div className="readTweet px-0 sm:px-6 md:px-12 lg:px-24 xl:px-36 2xl:px-44">
         <div className="flex flex-col my-borderCol pb-4">
           <div
             className="flex flex-col px-8 py-4 gap-2 cursor-pointer "
