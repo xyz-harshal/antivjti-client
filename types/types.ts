@@ -26,5 +26,6 @@ export type replyPostDataType = {
     userId: any,
     postId: any,
     reply: string,
+    img:any,
     writterId: any
 }

@@ -18,6 +18,7 @@ export let usePostTweet = (link:string) => {
     let handlePost = async (postData:tweetPostDataType | replyPostDataType |undefined,counter:any) => {
         try {
             await axios.post(`http://localhost:4000/${link}`, postData);
+            console.log(postData)
             dispatch(counter())
         }
         catch (e: any) {

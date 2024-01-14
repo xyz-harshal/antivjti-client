@@ -14,7 +14,6 @@ export let useTweets = () => {
     let handleGet = async () => {
         try {
             let mainRes = await axios.get('http://localhost:4000/userAuth', { headers })
-            console.log(true)
             if (mainRes.data.status == true) {
                 let res = (await axios.get("http://localhost:4000/getTweets"));
                 setIncData(res.data)
