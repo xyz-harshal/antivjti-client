@@ -1,14 +1,16 @@
 "use client"
 import { useEffect } from "react"
 import { useAuth } from "@/hooks/useAuth"
+import LoaderSpinner from "./components/loader"
 export default function Home() {
-  let { authCheck } = useAuth()
+  let { authCheck,loading } = useAuth()
   useEffect(() => {
     authCheck()
   }, [])
   return (
     <div className="home">
-      <p>This is home route</p>
+      
+      {loading?<LoaderSpinner />:<p>This is home route</p>}
     </div>
   )
 }
