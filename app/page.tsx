@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <>
-      <div className=" overflow-x-hidden h-full box-border relative text-center font-poppins text-gray-800 leading-normal tracking-wide">
+      {loading?<LoaderSpinner />:<div className=" overflow-x-hidden h-full box-border relative text-center font-poppins text-gray-800 leading-normal tracking-wide">
       <section className="banner">
         <div className="banner-content">
           <h2>VJTI Socials,An Anonymous forum</h2>
@@ -26,7 +26,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div ref={containerRef} className="container">
+      <div className="container">
         <section className="panel">
           <div className="pan">
           <h2>HTML</h2>
@@ -88,10 +88,12 @@ export default function Home() {
           <button>SUBMIT</button>
         </form>
       </section>
-      </div>
+      </div>}
     </>
+  
   );
-}
+  }
+
 
 
 
