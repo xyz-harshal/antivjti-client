@@ -6,12 +6,9 @@ import { useAuth } from "@/hooks/useAuth"
 
 import "./tailwind.css";
 
+import LoaderSpinner from "./components/loader"
 export default function Home() {
-  
-  const { authCheck } = useAuth();
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  
+  let { authCheck,loading } = useAuth()
   useEffect(() => {
     authCheck();
   }, []);

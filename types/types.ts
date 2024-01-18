@@ -13,16 +13,20 @@ export type tweetsMapDataType = {
     userID: string,
     post: string,
     username: string,
+    replies:string[]
+    img:string,
     upvoteIds: [mongoose.Schema.Types.ObjectId],
     downvoteIds: [mongoose.Schema.Types.ObjectId]
 };
 export type tweetPostDataType = {
     userId: any,
-    post: string
+    post: string,
+    img:any
 }
 export type replyPostDataType = {
     userId: any,
     postId: any,
     reply: string,
+    img:any,
     writterId: any
 }
