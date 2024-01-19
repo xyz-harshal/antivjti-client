@@ -17,7 +17,7 @@ export let usePostTweet = (link: string) => {
     };
     let handlePost = async (postData: tweetPostDataType | replyPostDataType | undefined, counter: any) => {
         try {
-            await axios.post(`http://localhost:4000/${link}`, postData);
+            await axios.post(process.env.NEXT_PUBLIC_SERVER_URL+'/'+link, postData);
             setInterval(() => {
                 dispatch(counter())
             }, 500);

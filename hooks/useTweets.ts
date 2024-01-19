@@ -7,20 +7,19 @@ import { tweetsMapDataType } from "@/types/types";
 export let useTweets = () => {
     let router = useRouter()
     let [incData, setIncData] = useState<tweetsMapDataType[]>()
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': Cookies?.get('user'),
-    }
+    let cookie=Cookies?.get('user')
+    // let headers = {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': Cookies?.get('user'),
+    // }
     let handleGet = async () => {
         try {
-            let mainRes = await axios.get('http://localhost:4000/userAuth', { headers })
-            if (mainRes.data.status == true) {
-                let res = (await axios.get("http://localhost:4000/getTweets"));
+            if (cookie) {
+                let res = (await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getTweets`));
                 setIncData(res.data)
             }
-            if (mainRes.data.status == false) {
-                router.push('/');
-            }
+            else router.push('/');
+            
         }
         catch (e: any) {
             console.log(e.message)

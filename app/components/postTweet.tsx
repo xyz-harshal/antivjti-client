@@ -39,7 +39,6 @@ export default function PostTweet() {
         img: base64
       })
     }
-
   }
   let handleTweetPost = () => {
     handlePost(postData, counter)

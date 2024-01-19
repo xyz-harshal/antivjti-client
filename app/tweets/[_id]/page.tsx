@@ -36,12 +36,12 @@ export default function Page({ params }: { params: { _id: string } }) {
   useEffect(() => {
     let fetch = async () => {
       try {
-        await axios.post("http://localhost:4000/getSpecificTweet", {
+        await axios.post("https://forum-8be6fe478ed5.herokuapp.com/getSpecificTweet", {
           _id: params._id,
         }).then((res) => {
           setIncData2(res.data);
         });
-        await axios.post("http://localhost:4000/getReplies", {
+        await axios.post("https://forum-8be6fe478ed5.herokuapp.com/getReplies", {
           _id: params._id,
         }).then((res) => setReplyData(res.data))
       } catch (e: any) {
