@@ -13,7 +13,7 @@ export let useRegister = () => {
                 res.data.error ? setError(true) : setError(false)
                 if (res.data.error == false) {
                     Cookies.set('user', res.data.token)
-                    router.push('/tweets')
+                    router.push('/timeline')
                 }
             }
             else {

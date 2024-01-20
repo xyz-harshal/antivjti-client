@@ -3,8 +3,8 @@ import { useState, ChangeEvent, FC } from "react"
 import Cookies from "js-cookie";
 import { counter2 } from "@/redux/features/reload2Toggle";
 import { replyPostDataType } from "@/types/types"
-import { usePostTweet } from "@/hooks/usePostTweet";
-import { useBase64 } from "@/hooks/useBase64";
+import { useEventsPost } from "@/hooks/usePostEvent";
+import { useBase64 } from "../../../../../../hooks/useBase64";
 import { MdOutlineFileUpload } from "react-icons/md";
 interface incProps {
   userId: any,
@@ -12,7 +12,7 @@ interface incProps {
 }
 let ReplyTweet: FC<incProps> = ({ userId, postId}) => {
   let { convertToBase64 } = useBase64()
-  let { textareaHeight, updateTextareaHeight, handlePost } = usePostTweet("reply")
+  let { textareaHeight, updateTextareaHeight, handlePost } = useEventsPost("reply")
   let [postData, setPostData] = useState<replyPostDataType>({
     userId: "",
     postId: "",

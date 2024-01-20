@@ -14,7 +14,7 @@ export let useLogin = () => {
                 setError(res.data.error);
                 if (res.data.error.email == true && res.data.error.password == true) {
                     Cookies.set("user", res.data.token);
-                    router.push('/tweets');
+                    router.push('/timeline');
                 }
                 else {
                     Cookies.set("user", '');

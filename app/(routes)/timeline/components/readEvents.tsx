@@ -1,27 +1,13 @@
-"use client";
-import { FC, useEffect, useState } from "react";
-import { FaRegComment } from "react-icons/fa";
-import { PiArrowFatDown, PiArrowFatUp } from "react-icons/pi";
-import { useRouter } from "next/navigation";
-import mongoose from "mongoose";
-import { useHandleUpArrow } from "@/hooks/useHandleVote";
+"use client"
+import { FC, useEffect } from "react"
+import { FaRegComment } from "react-icons/fa"
+import { PiArrowFatDown, PiArrowFatUp } from "react-icons/pi"
+import { useRouter } from "next/navigation"
+import { useHandleUpArrow } from "@/hooks/useHandleVote"
+import { readEventPropType } from "@/types/types"
 
-interface incProps {
-  username: string | undefined;
-  img: string | undefined,
-  post: string | undefined;
-  replies: number | undefined,
-  _id: string;
-  hier: boolean | undefined;
-  upvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
-  downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
-  isReply: boolean;
-}
-
-let ReadTweet: FC<incProps> = (data) => {
-  if (data.upvoteIds == undefined || data.downvoteIds == undefined) {
-    return (<div>loading</div>)
-  } else {
+let ReadEvents: FC<readEventPropType> = (data) => {
+  
     let { handleArrowUpClick, handleArrowDownClick, state_value_setter, votes, state } = useHandleUpArrow(data.upvoteIds, data.downvoteIds, data.isReply, data._id)
     let router = useRouter();
     useEffect(() => {
@@ -30,10 +16,7 @@ let ReadTweet: FC<incProps> = (data) => {
     return (
       <div className="readTweet px-0 sm:px-6 md:px-12 lg:px-24 xl:px-36 2xl:px-44">
         <div className="flex flex-col my-borderCol pb-4">
-          <div
-            className="flex flex-col px-8 py-4 gap-2 cursor-pointer "
-            onClick={() => (data.hier ? router.push(`/tweets/${data._id}`) : "")}
-          >
+          <div className="flex flex-col px-8 py-4 gap-2 cursor-pointer" onClick={() => (data.hier ? router.push(`/timeline/${data._id}`) : "")}>
             <p>{data.username}</p>
             <p className="postTag">{data.post}</p>
             <img src={data.img} alt="" />
@@ -59,11 +42,9 @@ let ReadTweet: FC<incProps> = (data) => {
               <p>{data.replies}</p>
               <FaRegComment />
             </div>
-
           </div>
         </div>
       </div>
     );
-  }
 };
-export default ReadTweet;
+export default ReadEvents;

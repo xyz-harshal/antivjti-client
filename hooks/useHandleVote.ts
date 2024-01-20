@@ -2,9 +2,11 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 export let useHandleUpArrow = (upvoteIds: any, downvoteIds: any, isReply: boolean, _id: string) => {
-  const [votes, setVotes] = useState(upvoteIds.length - downvoteIds.length);
-  const [state, setState] = useState(0);
-  const data = { userID: Cookies.get("user"), postID: _id };
+  const [votes, setVotes] = useState<number>(upvoteIds?.length - downvoteIds?.length);
+ 
+  const [state, setState] = useState(0)
+  const data = { userID: Cookies.get("user"), postID: _id }
+  console.log(data)
   const state_value_setter = async () => {
     if (isReply) {
       await axios
@@ -16,10 +18,11 @@ export let useHandleUpArrow = (upvoteIds: any, downvoteIds: any, isReply: boolea
       await axios
         .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/vote/check`, data)
         .then((res) => {
-          setState(res.data.value);
+          setState(res.data.value)
+         
         });
     }
-  };
+  }
   const handleArrowUpClick = async () => {
     if (isReply) {
       try {
@@ -70,5 +73,5 @@ export let useHandleUpArrow = (upvoteIds: any, downvoteIds: any, isReply: boolea
       }
     }
   };
-  return { handleArrowUpClick, handleArrowDownClick, state_value_setter, votes, state }
+  return { handleArrowUpClick, handleArrowDownClick,state_value_setter, votes, state }
 }
