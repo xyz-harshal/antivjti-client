@@ -7,7 +7,6 @@ import { useHandleUpArrow } from "@/hooks/useHandleVote"
 import { readEventPropType } from "@/types/types"
 
 let ReadEvents: FC<readEventPropType> = (data) => {
-  
     let { handleArrowUpClick, handleArrowDownClick, state_value_setter, votes, state } = useHandleUpArrow(data.upvoteIds, data.downvoteIds, data.isReply, data._id)
     let router = useRouter();
     useEffect(() => {

@@ -25,15 +25,16 @@ export default function Tweets() {
         </div>
       </div>
       <PostEvents />
-      {incData?.map((e) =>
+      {incData?.map((e,n) =>
         <ReadEvents
           replies={e.replies.length}
           upvoteIds={e.upvoteIds}
           downvoteIds={e.downvoteIds}
-          username={e.username} img={e.img}
+          username={e.username} 
+          img={e.img}
           post={e.post}
           _id={e._id}
-          key={e._id}
+          key={n}
           hier={true}
           isReply={false}
         />

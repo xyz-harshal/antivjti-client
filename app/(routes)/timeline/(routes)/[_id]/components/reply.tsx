@@ -38,7 +38,6 @@ let ReplyTweet: FC<incProps> = ({ userId, postId}) => {
     })
   }
   let handleRepliesPost = () => {
-    console.log(postData)
     handlePost(postData, counter2)
     setPostData({
       ...postData,

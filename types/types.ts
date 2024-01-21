@@ -60,6 +60,6 @@ export type specificEventDataType = {
     replies: string[],
     img: any,
     username: string,
-    upvoteIds: [mongoose.Schema.Types.ObjectId];
-    downvoteIds: [mongoose.Schema.Types.ObjectId];
+    upvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
+    downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
 };
