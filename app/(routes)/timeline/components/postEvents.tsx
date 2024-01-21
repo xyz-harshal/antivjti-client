@@ -1,15 +1,20 @@
 "use client"
-import { useState, ChangeEvent } from "react"
+import { FC,useState, ChangeEvent } from "react"
 import Cookies from "js-cookie";
-import { postEventDataType } from "@/types/types";
+import { postEventDataType,replyPostDataType } from "@/types/types"
 import { useEventsPost } from "@/hooks/usePostEvent"
-import { counter } from "@/redux/features/reloadToggle";
-import { useBase64 } from "@/hooks/useBase64";
-import { MdOutlineFileUpload } from "react-icons/md";
-
-let PostEvents=()=>{
+import { counter } from "@/redux/features/reloadToggle"
+import { counter2 } from "@/redux/features/reload2Toggle"
+import { useBase64 } from "@/hooks/useBase64"
+import { MdOutlineFileUpload } from "react-icons/md"
+interface incProp{
+  userId:any,
+  postId:any,
+  reply:boolean
+}
+let PostEvents:FC<incProp>=({userId,postId,reply})=>{
   let { convertToBase64 } = useBase64()
-  let { textareaHeight, updateTextareaHeight, handlePost } = useEventsPost("postEvents")
+  let { textareaHeight, updateTextareaHeight, handlePost } = useEventsPost()
   let cookie=Cookies.get('user')
   //THIS ARE THE STATES WE USED HERE
   let [imgSizeWarn, setImgSizeWarn] = useState<boolean>(false)
@@ -18,10 +23,18 @@ let PostEvents=()=>{
     post: "",
     img: ""
   })
+  let [replyData, setReplyData] = useState<replyPostDataType>({
+    userId: userId,
+    postId: postId,
+    reply: "",
+    img: "",
+    writterId: cookie
+  })
   //THIS IS WHERE ALL THE DATA FROM THE USER IS STORED IN STATES
   const InputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    updateTextareaHeight(event.target);Cookies.get('user')
+    updateTextareaHeight(event.target);
     setEventData({...eventData,post: event.target.value})
+    setReplyData({...replyData,reply:event.target.value})
   }
   let FileUpload = async (e: any) => {
     const file = e.target.files[0];
@@ -33,16 +46,19 @@ let PostEvents=()=>{
       setImgSizeWarn(false)
       const base64 = await convertToBase64(file);
       setEventData({...eventData,img: base64})
+      setReplyData({...replyData,img:base64})
     }
   }
   //THIS IS WHERE THE DATA IS SEND TO THE HOOK SO THAT IT CAN CALL BACKEND
   let PostEvent = () => {
-    handlePost(eventData, counter)
-    setEventData({
-      userId: cookie,
-      post: "",
-      img: ""
-    })
+    if(reply==false){
+      handlePost(eventData, counter,"postEvents")
+      setEventData({userId: cookie,post: "",img: ""})
+    }
+    if(reply==true){
+      handlePost(replyData,counter2,"reply")
+      setReplyData({...replyData,reply:'',img:''})
+    }
   }
 
   return (
@@ -63,7 +79,7 @@ let PostEvents=()=>{
           <label className="p-3 rounded-lg my-borderCol text-base outline-none hover:bg-white hover:text-black cursor-pointer" htmlFor="uploadFile" >
             <MdOutlineFileUpload size={'2rem'} />
           </label>
-          <button className="my-borderCol px-4 py-1 rounded-xl hover:bg-white hover:text-black" onClick={PostEvent}>Post</button>
+          <button className="my-borderCol px-4 py-1 rounded-xl hover:bg-white hover:text-black" onClick={PostEvent}>{reply?"Reply":"Post"}</button>
         </div>
       </div>
       <input

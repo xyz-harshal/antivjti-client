@@ -24,7 +24,7 @@ export default function Tweets() {
           <TbLogout size={'1.6rem'} />
         </div>
       </div>
-      <PostEvents />
+      <PostEvents postId="" userId="" reply={false} />
       {incData?.map((e,n) =>
         <ReadEvents
           replies={e.replies.length}

@@ -5,7 +5,7 @@ import { AppDispatch } from "@/redux/store"
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 
-export let useEventsPost = (link: string) => {
+export let useEventsPost = () => {
     let dispatch = useDispatch<AppDispatch>();
     const [textareaHeight, setTextareaHeight] = useState<number>(40);
     const updateTextareaHeight = (target: HTMLTextAreaElement) => {
@@ -21,7 +21,7 @@ export let useEventsPost = (link: string) => {
         'Content-Type': 'application/json',
         'Authorization': Cookies?.get('user'),
     }
-    let handlePost = async (postData: postEventDataType | replyPostDataType | undefined, counter: any) => {
+    let handlePost = async (postData: postEventDataType | replyPostDataType | undefined, counter: any,link: string) => {
         try {
             await axios.post(process.env.NEXT_PUBLIC_SERVER_URL+'/'+link, postData,{headers});
             setTimeout(() => {

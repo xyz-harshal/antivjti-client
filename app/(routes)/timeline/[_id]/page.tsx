@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from "react"
-import ReadEvents from "../../components/readEvents";
-import ReplyTweet from "./components/reply";
+import ReadEvents from "../components/readEvents";
+import PostEvents from "../components/postEvents";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useReplies } from "@/hooks/useReplies";
@@ -27,7 +27,7 @@ export default function Page({ params }: { params: { _id: string } }) {
             hier={false}
             isReply={false}
           />
-          <ReplyTweet userId={specficEventData?.userID} postId={specficEventData?._id} />
+          <PostEvents userId={specficEventData?.userID} postId={specficEventData?._id} reply={true} />
           {allReplyData?.map((e, n) => (
             <ReadEvents
               username={e.writterName}
