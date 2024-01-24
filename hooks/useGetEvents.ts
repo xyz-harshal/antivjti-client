@@ -7,6 +7,7 @@ import { tweetsMapDataType } from "@/types/types";
 export let useGetEvents = () => {
     let router = useRouter()
     let [incData, setIncData] = useState<tweetsMapDataType[]>()
+    let [voteData, setVoteData] = useState([]);
     let cookie=Cookies?.get('user')
     let headers = {
         'Content-Type': 'application/json',
@@ -16,7 +17,9 @@ export let useGetEvents = () => {
         try {
             if (cookie) {
                 let res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getTweets`,{headers});
-                setIncData(res.data)
+                setIncData(res.data.data);
+                setVoteData(res.data.voteData);
+                console.log(res.data.voteData);
             }
             else router.push('/'); 
         }
@@ -24,5 +27,5 @@ export let useGetEvents = () => {
             console.log(e.message)
         }
     }
-    return {handleGet,incData}
+    return {handleGet,incData, voteData}
 }

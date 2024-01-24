@@ -7,10 +7,10 @@ import { useHandleUpArrow } from "@/hooks/useHandleVote"
 import { readEventPropType } from "@/types/types"
 
 let ReadEvents: FC<readEventPropType> = (data) => {
-    let { handleArrowUpClick, handleArrowDownClick, state_value_setter, votes, state } = useHandleUpArrow(data.upvoteIds, data.downvoteIds, data.isReply, data._id)
+    let { handleArrowUpClick, handleArrowDownClick, votes, state, default_state_value } = useHandleUpArrow(data.upvoteIds, data.downvoteIds, data.isReply, data._id)
     let router = useRouter();
     useEffect(() => {
-      state_value_setter();
+      default_state_value(data.voteData);
     }, []);
     return (
       <div className="readTweet px-0 sm:px-6 md:px-12 lg:px-24 xl:px-36 2xl:px-44">

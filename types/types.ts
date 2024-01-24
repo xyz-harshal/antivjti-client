@@ -40,6 +40,7 @@ export interface readEventPropType {
     upvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
     downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
     isReply: boolean;
+    voteData: number
 }
 export type replyDataType = {
     _id: any | undefined;
