@@ -12,6 +12,9 @@ export let useHandleUpArrow = (upvoteIds: any, downvoteIds: any, isReply: boolea
         setState(res.data.value);
       });
   }
+  const default_state_value = (value:number)=>{
+    setState(value);
+  }
   const handleArrowUpClick = async () => {
     try {
       await axios
@@ -36,5 +39,5 @@ export let useHandleUpArrow = (upvoteIds: any, downvoteIds: any, isReply: boolea
       console.log(e.message);
     }
   };
-  return { handleArrowUpClick, handleArrowDownClick, state_value_setter, votes, state }
+  return { handleArrowUpClick, handleArrowDownClick, state_value_setter, votes, state, default_state_value }
 }

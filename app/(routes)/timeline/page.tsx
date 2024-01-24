@@ -11,7 +11,7 @@ import { useLogout } from "@/hooks/useLogout"
 export default function Tweets() {
   let { logOut } = useLogout()
   let selector = useSelector((state: RootState) => state.toggle.value)
-  let { handleGet, incData } = useGetEvents()
+  let { handleGet, incData, voteData } = useGetEvents()
   useEffect(() => {
     handleGet()
   }, [selector])
@@ -37,6 +37,7 @@ export default function Tweets() {
           key={n}
           hier={true}
           isReply={false}
+          voteData={voteData[n]}
         />
       )}
     </div>
