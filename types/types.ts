@@ -42,7 +42,7 @@ export interface readEventPropType {
     downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
     isReply: boolean;
     voteData: number;
-    createdAt: Date ;
+    createdAt: Date | undefined;
 }
 export type replyDataType = {
     _id: any | undefined;

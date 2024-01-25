@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 export let useHandleUpArrow = (upvoteIds: any, downvoteIds: any, isReply: boolean, _id: string) => {
   const [votes, setVotes] = useState<number>(upvoteIds?.length - downvoteIds?.length);
-  const [state, setState] = useState<number>(0)
+  const [state, setState] = useState<number>(0);
   const data = { userID: Cookies.get("user"), postID: _id, isReply: isReply }
   const state_value_setter = async () => {
     await axios
