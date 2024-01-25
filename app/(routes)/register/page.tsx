@@ -1,9 +1,10 @@
 "use client"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { useRegister } from "@/hooks/useRegister"
 import { credDataType } from "@/types/types"
-
+import { useAuth } from "@/hooks/useAuth"
 export default function Register() {
+  let {authCheck}=useAuth()
   let { handleRegisterData, error } = useRegister()
   let [registeredData, setRegisteredData] = useState<credDataType>({
     email: "",
@@ -12,6 +13,9 @@ export default function Register() {
   let handleRegister = () => {
     handleRegisterData(registeredData)
   }
+  useEffect(() => {
+    authCheck();
+  }, []);
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-8 gap-6">

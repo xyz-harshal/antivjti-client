@@ -1,9 +1,11 @@
 "use client"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { useLogin } from "@/hooks/useLogin"
 import { credDataType } from "@/types/types"
+import { useAuth } from "@/hooks/useAuth"
 export default function Login() {
   let {handleLoginData,error}=useLogin()
+  let {authCheck}=useAuth()
   let [loginData, setLoginData] = useState<credDataType>({
     email: "",
     password: ""
@@ -11,6 +13,9 @@ export default function Login() {
   let handleLogin=()=>{
     handleLoginData(loginData)
   }
+  useEffect(() => {
+    authCheck();
+  }, []);
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-8 gap-6">
