@@ -1,17 +1,11 @@
-import { Bars } from "react-loader-spinner"
-export default function LoaderSpinner() {
-    return (
-        <div className="flex flex-row justify-center items-center">
-            <Bars
-                height="100"
-                width="100"
-                color="white"
-                ariaLabel="bars-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-            />
-        </div>
+import {FadeLoader } from 'react-spinners'
+let LoaderSpinner=()=>{
+  return (
+    <div className='flex flex-row justify-center pt-8'>
+    <FadeLoader color="#C147E9" />
+    </div>
 
-    )
+  )
+  
 }
+export default LoaderSpinner

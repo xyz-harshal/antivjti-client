@@ -7,11 +7,11 @@ import { RootState } from "@/redux/store"
 import { useGetEvents } from "@/hooks/useGetEvents"
 import { TbLogout } from "react-icons/tb";
 import { useLogout } from "@/hooks/useLogout"
-
+import LoaderSpinner from "@/app/components/loader"
 export default function Tweets() {
   let { logOut } = useLogout()
   let selector = useSelector((state: RootState) => state.toggle.value)
-  let { handleGet, incData } = useGetEvents()
+  let { handleGet, incData,isLoading,didLoad } = useGetEvents()
   useEffect(() => {
     handleGet()
   }, [selector])
@@ -25,7 +25,9 @@ export default function Tweets() {
         </div>
       </div>
       <PostEvents postId="" userId="" reply={false} />
-      {incData?.map((e,n) =>
+      {isLoading || didLoad?
+      <LoaderSpinner />
+      :incData?.map((e,n) =>
         <ReadEvents
           replies={e.replies.length}
           upvoteIds={e.upvoteIds}
