@@ -2,7 +2,6 @@
 import { useState } from "react"
 import { useLogin } from "@/hooks/useLogin"
 import { credDataType } from "@/types/types"
-
 export default function Login() {
   let {handleLoginData,error}=useLogin()
   let [loginData, setLoginData] = useState<credDataType>({

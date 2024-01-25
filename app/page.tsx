@@ -4,11 +4,13 @@ import React, { useEffect, useRef } from "react";
 
 import { useAuth } from "@/hooks/useAuth"
 
+
 import "./tailwind.css";
 
 import LoaderSpinner from "./components/loader"
+
 export default function Home() {
-  let { authCheck,loading } = useAuth()
+  let { authCheck } = useAuth()
   useEffect(() => {
     authCheck();
   }, []);

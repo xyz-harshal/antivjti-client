@@ -4,27 +4,28 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { tweetsMapDataType } from "@/types/types";
 
-export let useTweets = () => {
+export let useGetEvents = () => {
     let router = useRouter()
     let [incData, setIncData] = useState<tweetsMapDataType[]>()
+    let [voteData, setVoteData] = useState([]);
+    let cookie=Cookies?.get('user')
     let headers = {
         'Content-Type': 'application/json',
-        'Authorization': Cookies?.get('user'),
+        'Authorization': cookie,
     }
     let handleGet = async () => {
         try {
-            let mainRes = await axios.get('http://localhost:4000/userAuth', { headers })
-            if (mainRes.data.status == true) {
-                let res = (await axios.get("http://localhost:4000/getTweets"));
-                setIncData(res.data)
+            if (cookie) {
+                let res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getTweets`,{headers});
+                setIncData(res.data.data);
+                setVoteData(res.data.voteData);
+                console.log(res.data.voteData);
             }
-            if (mainRes.data.status == false) {
-                router.push('/');
-            }
+            else router.push('/'); 
         }
         catch (e: any) {
             console.log(e.message)
         }
     }
-    return {handleGet,incData}
+    return {handleGet,incData, voteData}
 }
