@@ -5,10 +5,10 @@ import { replyDataType, specificEventDataType } from "@/types/types";
 import { useEventsPost } from "./usePostEvent";
 
 export let useReplies = (params: any) => {
-  let {didLoad}=useEventsPost()
+  let { didLoad } = useEventsPost()
   let [specficEventData, setSpecificEventData] = useState<specificEventDataType>();
-    let [voteData, setVoteData] = useState([]);
-    let [rvoteData, setRVoteData] = useState([]);
+  let [voteData, setVoteData] = useState([]);
+  let [rvoteData, setRVoteData] = useState([]);
   let [allReplyData, setAllReplyData] = useState<replyDataType[]>()
   let [isLoading, setIsLoading] = useState<boolean>()
   let fetchRepliesData = async () => {
@@ -18,14 +18,14 @@ export let useReplies = (params: any) => {
         _id: params._id, userID: Cookies.get("user")
       }).then((res) => {
         setSpecificEventData(res.data.data);
-            setVoteData(res.data.voteData);
+        setVoteData(res.data.voteData);
       })
       await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/getReplies`, {
         _id: params._id, userID: Cookies.get("user")
       }).then((res) => {
-            setAllReplyData(res.data.response);
-            setRVoteData(res.data.voteData);
-          })
+        setAllReplyData(res.data.response);
+        setRVoteData(res.data.voteData);
+      })
     } catch (e: any) {
       console.log(e.message)
     }
@@ -33,5 +33,5 @@ export let useReplies = (params: any) => {
       setIsLoading(false)
     }
   }
-  return { specficEventData, allReplyData, isLoading, fetchRepliesData,didLoad , rvoteData,voteData}
+  return { specficEventData, allReplyData, isLoading, fetchRepliesData, didLoad, rvoteData, voteData }
 }
