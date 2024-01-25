@@ -38,6 +38,7 @@ export default function Tweets() {
           hier={true}
           isReply={false}
           voteData={voteData[n]}
+          createdAt={e.date}
         />
       )}
     </div>
