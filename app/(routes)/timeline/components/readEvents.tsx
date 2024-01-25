@@ -5,6 +5,7 @@ import { PiArrowFatDown, PiArrowFatUp } from "react-icons/pi"
 import { useRouter } from "next/navigation"
 import { useHandleUpArrow } from "@/hooks/useHandleVote"
 import { readEventPropType } from "@/types/types"
+import { timeSince } from "@/hooks/useTimeSince"
 
 let ReadEvents: FC<readEventPropType> = (data) => {
     let { handleArrowUpClick, handleArrowDownClick, votes, state, default_state_value } = useHandleUpArrow(data.upvoteIds, data.downvoteIds, data.isReply, data._id)
@@ -12,11 +13,12 @@ let ReadEvents: FC<readEventPropType> = (data) => {
     useEffect(() => {
       default_state_value(data.voteData);
     }, []);
+    const timeSinceText: string = timeSince(new Date(data.createdAt));
     return (
       <div className="readTweet px-0 sm:px-6 md:px-12 lg:px-24 xl:px-36 2xl:px-44">
         <div className="flex flex-col my-borderCol pb-4">
           <div className="flex flex-col px-8 py-4 gap-2 cursor-pointer" onClick={() => (data.hier ? router.push(`/timeline/${data._id}`) : "")}>
-            <p>{data.username}</p>
+            <p>@{data.username} | <small>{timeSinceText}</small> </p>
             <p className="postTag">{data.post}</p>
             <img src={data.img} alt="" />
           </div>

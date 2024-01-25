@@ -16,7 +16,8 @@ export type tweetsMapDataType = {
     replies: string[]
     img: string,
     upvoteIds: [mongoose.Schema.Types.ObjectId],
-    downvoteIds: [mongoose.Schema.Types.ObjectId]
+    downvoteIds: [mongoose.Schema.Types.ObjectId],]
+    date: Date
 };
 export type postEventDataType = {
     userId: any,
@@ -40,7 +41,8 @@ export interface readEventPropType {
     upvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
     downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
     isReply: boolean;
-    voteData: number
+    voteData: number;
+    createdAt: Date ;
 }
 export type replyDataType = {
     _id: any | undefined;
@@ -53,6 +55,7 @@ export type replyDataType = {
     writterName: string | undefined;
     upvoteIds: [mongoose.Schema.Types.ObjectId];
     downvoteIds: [mongoose.Schema.Types.ObjectId];
+    date: Date | undefined
 }
 export type specificEventDataType = {
     _id: string | any,
@@ -63,4 +66,5 @@ export type specificEventDataType = {
     username: string,
     upvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
     downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
+    date: Date | undefined
 };
