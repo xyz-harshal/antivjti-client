@@ -8,7 +8,7 @@ import { useReplies } from "@/hooks/useReplies";
 
 export default function Page({ params }: { params: { _id: string } }) {
   let selector = useSelector((state: RootState) => state.toggle2.value)
-  let { specficEventData, allReplyData, vis, fetchRepliesData } = useReplies(params)
+  let { specficEventData, allReplyData, vis, fetchRepliesData, rvoteData, voteData } = useReplies(params)
   useEffect(() => {
     fetchRepliesData()
   }, [selector])
@@ -25,7 +25,9 @@ export default function Page({ params }: { params: { _id: string } }) {
             post={specficEventData?.post}
             _id={specficEventData?._id}
             hier={false}
+            voteData={voteData}
             isReply={false}
+            createdAt={specficEventData?.date}
           />
           <PostEvents userId={specficEventData?.userID} postId={specficEventData?._id} reply={true} />
           {allReplyData?.map((e, n) => (
@@ -39,7 +41,9 @@ export default function Page({ params }: { params: { _id: string } }) {
               upvoteIds={e?.upvoteIds}
               downvoteIds={e?.downvoteIds}
               isReply={true}
+              voteData={rvoteData[n]}
               key={n}
+              createdAt={e.date}
             />
           ))}
         </> :

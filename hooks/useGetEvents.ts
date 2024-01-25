@@ -19,7 +19,6 @@ export let useGetEvents = () => {
                 let res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getTweets`,{headers});
                 setIncData(res.data.data);
                 setVoteData(res.data.voteData);
-                console.log(res.data.voteData);
             }
             else router.push('/'); 
         }
