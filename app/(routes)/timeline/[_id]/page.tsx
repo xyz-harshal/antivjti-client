@@ -5,16 +5,19 @@ import PostEvents from "../components/postEvents";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useReplies } from "@/hooks/useReplies";
+import LoaderSpinner from "@/app/components/loader";
 
 export default function Page({ params }: { params: { _id: string } }) {
   let selector = useSelector((state: RootState) => state.toggle2.value)
-  let { specficEventData, allReplyData, vis, fetchRepliesData, rvoteData, voteData } = useReplies(params)
+  let { specficEventData, allReplyData, isLoading, fetchRepliesData,didLoad, rvoteData, voteData } = useReplies(params)
   useEffect(() => {
     fetchRepliesData()
   }, [selector])
   return (
     <div className="mx-0 sm:mx-0 md:mx-28 lg:mx-48 xl:mx-72 2xl:mx-96">
-      {vis ?
+      {isLoading || didLoad ?
+      <LoaderSpinner />
+      :
         <>
           <ReadEvents
             replies={specficEventData?.replies.length}
@@ -46,8 +49,8 @@ export default function Page({ params }: { params: { _id: string } }) {
               createdAt={e.date}
             />
           ))}
-        </> :
-        <p>hemloo loading</p>}
+        </> 
+        }
     </div>
   );
 }

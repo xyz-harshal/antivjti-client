@@ -7,11 +7,12 @@ import Cookies from "js-cookie";
 
 export let useEventsPost = () => {
     let dispatch = useDispatch<AppDispatch>();
-    const [textareaHeight, setTextareaHeight] = useState<number>(40);
-    const updateTextareaHeight = (target: HTMLTextAreaElement) => {
-        const minTextareaHeight = 40;
-        const maxTextareaHeight = 200;
-        const newHeight = Math.min(
+    let [didLoad,setDidLoad]=useState<boolean>()
+    let [textareaHeight, setTextareaHeight] = useState<number>(40);
+    let updateTextareaHeight = (target: HTMLTextAreaElement) => {
+        let minTextareaHeight = 40;
+        let maxTextareaHeight = 200;
+        let newHeight = Math.min(
             maxTextareaHeight,
             Math.max(minTextareaHeight, target.scrollHeight)
         )
@@ -21,8 +22,10 @@ export let useEventsPost = () => {
         'Content-Type': 'application/json',
         'Authorization': Cookies?.get('user'),
     }
+
     let handlePost = async (postData: postEventDataType | replyPostDataType | undefined, counter: any,link: string) => {
         try {
+            setDidLoad(true)
             await axios.post(process.env.NEXT_PUBLIC_SERVER_URL+'/'+link, postData,{headers});
             setTimeout(() => {
                 dispatch(counter())
@@ -32,6 +35,9 @@ export let useEventsPost = () => {
         catch (e: any) {
             console.log(e.message);
         }
+        finally{
+            setDidLoad(false)
+        }
     }
-    return { textareaHeight, updateTextareaHeight, handlePost }
+    return { textareaHeight, updateTextareaHeight, handlePost,didLoad }
 }
