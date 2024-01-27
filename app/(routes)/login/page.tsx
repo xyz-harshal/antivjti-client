@@ -13,9 +13,9 @@ export default function Login() {
   let handleLogin=()=>{
     handleLoginData(loginData)
   }
-  useEffect(() => {
-    authCheck();
-  }, []);
+  // useEffect(() => {
+  //   authCheck();
+  // }, []);
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-8 gap-6">
