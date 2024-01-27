@@ -9,20 +9,19 @@ export default function Home() {
   useEffect(() => {
     authCheck();
   }, []);
-
-
   return (
     <>
       <div className=" overflow-x-hidden h-full box-border relative text-center font-poppins text-gray-800 leading-normal tracking-wide">
-      <section className="banner">
-        <div className="banner-content">
-          <h2>VJTI Socials,An Anonymous forum</h2>
-          <div className="buttons">
-          <button className='LPbutton'>Register</button>
-          <button className='LPbutton'>Login</button>
+        <section className="banner">
+          <div className="banner-content">
+            <h2>VJTI Socials,An Anonymous forum</h2>
+            <div className="buttons">
+              <button className='LPbutton' >Register</button>
+              <button className='LPbutton' onClick={()=>router.push('/login')}>Login</button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      
       <div className="container">
         <div className="pan">
         <section className="panel">
@@ -88,9 +87,9 @@ export default function Home() {
       
       </div>
     </>
-  
+
   );
-  }
+}
 
 
 
