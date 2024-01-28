@@ -9,7 +9,7 @@ export default function Home() {
       <div>
         <section className="banner">
           <div className="banner-content">
-            <h2>VJTI Socials,An Anonymous forum</h2>
+            <h2>ANTI VJTI</h2>
             <div className="buttons">
               <button className='LPbutton' >Register</button>
               <button className='LPbutton' onClick={()=>router.push('/login')}>Login</button>
@@ -24,10 +24,8 @@ export default function Home() {
           
           
           <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis 
+          Unveil your thoughts freely on ANTI VJTI, the anonymous platform , exclusively for authentic and open conversations among vjtians.
           </p>
-          
           
         </section>
         </div>
@@ -37,11 +35,18 @@ export default function Home() {
           
           
          <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis 
+         Explore unfiltered opinions, ideas, and creativity from across departments and disciplines; all under one roof on Antivjti.
           </p>
           
+        </section>
+        </div>
+        <div className="pan">
+        <section className="panel">
+                <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
           
+         <p className="F-content">
+            Stay updated on trending topics, events, and initiatives happening around your school through real-time updates and notifications on Antivjti.
+          </p>
         </section>
         </div>
         <div className="pan">
@@ -50,23 +55,8 @@ export default function Home() {
           
           
          <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis 
+         Connect with friends and strangers alike over relatable memes and humorous anecdotes on Antivjti.
           </p>
-          
-          
-        </section>
-        </div>
-        <div className="pan">
-        <section className="panel">
-                <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
-          
-          
-         <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis 
-          </p>
-          
           
         </section>
         </div>
