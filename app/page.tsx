@@ -1,14 +1,9 @@
 "use client"
-import React, { useEffect, useRef } from "react";
-import { useAuth } from "@/hooks/useAuth"
+import React from "react";
 import "./tailwind.css";
 import { useRouter } from "next/navigation";
 export default function Home() {
   let router=useRouter()
-  let { authCheck } = useAuth()
-  useEffect(() => {
-    authCheck();
-  }, []);
   return (
     <>
       <div>
@@ -82,11 +77,3 @@ export default function Home() {
 
   );
 }
-
-
-
-
-
-
-
-
