@@ -37,6 +37,9 @@ let ReadEvents: FC<readEventPropType> = (data) => {
                 size={"1.4rem"}
                 color={state == -1 ? "orange" : "white"}
                 onClick={handleArrowDownClick}
+                className={
+                  "bg-black text-white cursor-pointer transition-all ease-in hover:scale-125 active:scale-90 focus:outline-none focus:ring focus:ring-violet-300"
+                }
               />
             </div>
             <div className="flex flex-row justify-center items-center gap-3">

@@ -7,8 +7,10 @@ import axios from "axios"
 export let useLogin = () => {
     let router = useRouter()
     let [error, setError] = useState<loginErrorType>()
+    let [isLoading, setIsLoading] = useState<boolean>(false)
     let handleLoginData = async (loginData: credDataType) => {
         try {
+            setIsLoading(true);
             if (loginData.email.endsWith('.vjti.ac.in')) {
                 let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, loginData)
                 setError(res.data.error);
@@ -27,6 +29,9 @@ export let useLogin = () => {
         catch (e: any) {
             console.log(e.message);
         }
+        finally {
+            setIsLoading(false);
+        }
     }
-    return { handleLoginData, error }
+    return { handleLoginData, error,isLoading }
 }
