@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useRegister } from "@/hooks/useRegister"
 import { credDataType } from "@/types/types"
 import { useRouter } from "next/navigation"
+import { BarLoader } from "react-spinners"
 import Navbar from "@/app/components/navbar"
 import { Ubuntu } from "next/font/google"
 const ubuntu = Ubuntu({
@@ -11,7 +12,7 @@ const ubuntu = Ubuntu({
   display: 'swap',
 })
 export default function Register() {
-  let { handleRegisterData, error } = useRegister()
+  let { handleRegisterData, error,isLoading} = useRegister()
   let [registeredData, setRegisteredData] = useState<credDataType>({
     email: "",
     password: ""
@@ -51,6 +52,7 @@ export default function Register() {
           </button>
         </div>
       </div>
+      {isLoading?<BarLoader color="#36d7b7" width={310} />:null}
       <p className={ubuntu.className}>already registered?<span className="cursor-pointer auth-header text-xl text-violet-600" onClick={() => router.push('/login')} > Login</span> here!</p>
     </div>
     </>

@@ -60,11 +60,11 @@ let PostEvents: FC<incProp> = ({ userId, postId, reply }) => {
   let PostEvent = () => {
     if (reply == false) {
       handlePost(eventData, counter, "postEvents")
-      setEventData({ userId: cookie, post: "", img: "" })
+      setEventData({ userId: cookie, post:'', img:''})
     }
     if (reply == true) {
       handlePost(replyData, counter2, "reply")
-      setReplyData({ ...replyData, reply: '', img: '' })
+      setReplyData({ ...replyData, reply:'', img:'' })
     }
   }
   return (
