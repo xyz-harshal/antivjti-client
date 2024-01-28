@@ -9,9 +9,9 @@ export default function Home() {
       <div>
         <section className="banner">
           <div className="banner-content">
-            <h2>ANTI VJTI</h2>
+            <h2>ANTI VJTI,AN ANONYMOUS FORUM</h2>
             <div className="buttons">
-              <button className='LPbutton' >Register</button>
+              <button className='LPbutton' onClick={()=>router.push('/register')} >Register</button>
               <button className='LPbutton' onClick={()=>router.push('/login')}>Login</button>
             </div>
           </div>
