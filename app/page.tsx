@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth"
 import "./tailwind.css";
 import { useRouter } from "next/navigation";
 export default function Home() {
-  let router=useRouter()
+  let router = useRouter()
   let { authCheck } = useAuth()
   useEffect(() => {
     authCheck();
@@ -16,74 +16,73 @@ export default function Home() {
           <div className="banner-content">
             <h2>VJTI Socials,An Anonymous forum</h2>
             <div className="buttons">
-              <button className='LPbutton' >Register</button>
-              <button className='LPbutton' onClick={()=>router.push('/login')}>Login</button>
+              <button className='LPbutton' onClick={() => router.push('/register')} >Register</button>
+              <button className='LPbutton' onClick={() => router.push('/login')}>Login</button>
             </div>
           </div>
         </section>
-      
-      <div className="container">
-        <div className="pan">
-        <section className="panel">
-        <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
-          
-          
-          <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
-          </p>
-          
-          
-        </section>
-        </div>
-        <div className="pan">
-        <section className="panel">
-                <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
-          
-          
-          <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
-          </p>
-          
-          
-        </section>
-        </div>
-        <div className="pan">
-        <section className="panel">
-                <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
-          
-          
-          <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
-          </p>
+        <div className="container">
+          <div className="pan">
+            <section className="panel">
+              <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
 
-        </section>
+
+              <p className="F-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
+                labore eius cum perferendis consectetur culpa laboriosam quam, sed
+                ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
+                deleniti eaque sed.
+              </p>
+
+
+            </section>
+          </div>
+          <div className="pan">
+            <section className="panel">
+              <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
+
+
+              <p className="F-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
+                labore eius cum perferendis consectetur culpa laboriosam quam, sed
+                ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
+                deleniti eaque sed.
+              </p>
+
+
+            </section>
+          </div>
+          <div className="pan">
+            <section className="panel">
+              <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
+
+
+              <p className="F-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
+                labore eius cum perferendis consectetur culpa laboriosam quam, sed
+                ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
+                deleniti eaque sed.
+              </p>
+
+            </section>
+          </div>
+          <div className="pan">
+            <section className="panel">
+              <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
+
+
+              <p className="F-content">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
+                labore eius cum perferendis consectetur culpa laboriosam quam, sed
+                ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
+                deleniti eaque sed.
+              </p>
+
+
+            </section>
+          </div>
         </div>
-        <div className="pan">
-        <section className="panel">
-                <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
-          
-          
-          <p className="F-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
-          </p>
-          
-          
-        </section>
-        </div>
-      </div>
-      
+
       </div>
     </>
 

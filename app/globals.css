@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif@1&family=Work+Sans:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,7 +27,7 @@ body {
     rgb(var(--background-start-rgb));
 }
 .my-borderCol{
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(255, 255, 255, 0.140);
   }
 .post-input{
     border-bottom: 1px solid rgba(255, 255, 255, 0.125) ;
@@ -34,4 +35,11 @@ body {
 .postTag{
   text-overflow: unset;
   word-wrap: break-word;
+}
+
+.auth-header{
+  font-family: 'Work Sans', sans-serif;
+}
+.nav-text-font{
+  font-family: 'PT Serif', serif;
 }

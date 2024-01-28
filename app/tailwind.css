@@ -1,148 +1,129 @@
 @import url('https://fonts.googleapis.com/css2?family=AR+One+Sans&family=Agdasima&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron&display=swap');
 
 .container {
-    width: 100%; 
-    padding: 4rem;
-    background: linear-gradient(to bottom, rgb(57, 53, 86), rgb(17, 8, 27));
-  }
-  
-  .icon {
-    height: auto;
-    object-fit: contain;
-    background: #f9f9ff;
-    width: 18rem;
-    height: 18rem;
-    border-radius: 50%;
-    
-  }
-  
-  .banner h2{
-    font-family: 'Exo 2', sans-serif;
-    margin: 20px 0;
-  }
-  
-  
-  
- 
-  
-  .F-content {
-    font-family: 'Exo 2', sans-serif;
-    opacity: 1;
-    font-size: 1.6rem;
-    line-height: 1.7;
-    color: #f7f7f7;
-  }
-  
-  .banner {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    align-items: center;
-    flex-direction: row;
-    text-align: left;
-    gap: 30px;
-    background: url("https://img.goodfon.com/wallpaper/nbig/b/59/mountain-moon-abstraction.jpg");
-    background-size: cover;
-    background-position: center;
-    color: #f7f7f7;
-    font-family: 'Exo 2', sans-serif;
-    width: 100%; 
-    height: 100vh;
-  }
-  .panel {
-    position: relative;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    padding: 3rem;
-    z-index: 2;
-    width: 100%; 
-    height: 100vh;
-  }
-  .banner-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(rgb(57 53 86 / 0%), rgb(57 53 86 / 100%) 90%);
-    z-index: 2;
-  }
-  
-  
-  .banner h2 {
-    font-size: 40px;
-  }
-  .pan {
-    margin-top: 3.5rem;
-    backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
-    background: linear-gradient(to right, rgba(76, 76, 122, 0.51), rgb(97, 2, 97));
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
-    box-shadow: 0 0 22.5px purple;
-    height: 40%;
-    
+  width: 100%;
+  padding: 4rem;
+  background: linear-gradient(to bottom, rgb(57, 53, 86), rgb(17, 8, 27));
 }
+.icon {
+  height: auto;
+  object-fit: contain;
+  background: #f9f9ff;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
 
-  
-  
- 
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
+}
+.banner h2 {
+  font-family: 'Exo 2', sans-serif;
+  margin: 20px 0;
+}
+.F-content {
+  font-family: 'Exo 2', sans-serif;
+  opacity: 1;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #f7f7f7;
+}
+.banner {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+  text-align: left;
+  gap: 30px;
+  background: url("https://img.goodfon.com/wallpaper/nbig/b/59/mountain-moon-abstraction.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #f7f7f7;
+  font-family: 'Exo 2', sans-serif;
+  width: 100%;
+  height: 100vh;
+}
+.panel {
+  position: relative;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+}
+.banner-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgb(57 53 86 / 0%), rgb(57 53 86 / 100%) 90%);
+  z-index: 2;
+}
+.banner h2 {
+  font-size: 40px;
+}
+.pan {
+  margin-top: 3.5rem;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  background: linear-gradient(to right, rgba(76, 76, 122, 0.51), rgb(97, 2, 97));
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0 0 22.5px purple;
+  height: 40%;
+
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+.LPbutton {
+  font-family: inherit;
+  border-radius: 6px;
+  border: 0;
+  padding: 10px;
+  font-size: 1rem;
+  background: #7b66fd;
+  color: #f7f7f7;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: background 0.3s ease;
+  width: 12rem;
+  margin: 1rem;
+}
+.LPbutton:hover {
+  background: #5e45c4;
+}
+@media only screen and (max-width: 767px) {
+  .panel {
+    height: 12rem;
   }
- 
-  .LPbutton {
-    font-family: inherit;
-    border-radius: 6px;
-    border: 0;
-    padding: 10px;
-    font-size: 1rem;
-    background: #7b66fd;
-    color: #f7f7f7;
-    font-weight: 600;
-    letter-spacing: 2px;
-    transition: background 0.3s ease; 
-    width: 12rem;
-    margin: 1rem;
-  }
-  
-  .LPbutton:hover {
-    background: #5e45c4; 
-   }
-  
-  
- @media only screen and (max-width: 767px) {
-    .panel {
-      height: 12rem; 
-    }
-    .container{
-      padding: 1rem;
-    }
 
-    .F-content{
-      font-size: 0.5rem;
-    }
-    
-    .icon{
-      width: 6rem;
-      height: 6rem;
-    }
-
-    .banner h2 {
-      margin-left: 3rem;
-      font-size: 2rem;
-    }
+  .container {
+    padding: 1rem;
   }
 
-  
+  .F-content {
+    font-size: 0.5rem;
+  }
+
+  .icon {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .banner h2 {
+    margin-left: 3rem;
+    font-size: 2rem;
+  }
+}

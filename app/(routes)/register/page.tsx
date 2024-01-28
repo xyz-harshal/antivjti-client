@@ -1,10 +1,16 @@
 "use client"
-import { useState,useEffect } from "react"
+import { useState } from "react"
 import { useRegister } from "@/hooks/useRegister"
 import { credDataType } from "@/types/types"
-import { useAuth } from "@/hooks/useAuth"
+import { useRouter } from "next/navigation"
+import Navbar from "@/app/components/navbar"
+import { Ubuntu } from "next/font/google"
+const ubuntu = Ubuntu({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+})
 export default function Register() {
-  let {authCheck}=useAuth()
   let { handleRegisterData, error } = useRegister()
   let [registeredData, setRegisteredData] = useState<credDataType>({
     email: "",
@@ -13,42 +19,43 @@ export default function Register() {
   let handleRegister = () => {
     handleRegisterData(registeredData)
   }
-  // useEffect(() => {
-  //   authCheck();
-  // }, []);
+  let router = useRouter()
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <>
+    <Navbar />
+    <div className="flex flex-col gap-2 items-center justify-center mt-56">
       <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-8 gap-6">
-        <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">Register</h2>
+        <h2 className="auth-header text-5xl text-violet-600">Register</h2>
         <div className="flex flex-col items-start gap-2 ">
-          <p>Email</p>
-          <p>{error ? "username already exist" : null}</p>
+          <p className={ubuntu.className+' text-xl'}>Email</p>
+          <p className={ubuntu.className}>{error ? "email already exist" : null}</p>
           <input
-           type="email" 
-           className="bg-black outline-none my-borderCol rounded-md p-1" 
-           autoComplete="username" 
-           onChange={(e) => { setRegisteredData({ ...registeredData, email: e.target.value })}}
+            type="email"
+            className="bg-black outline-none my-borderCol rounded-md p-1"
+            autoComplete="username"
+            onChange={(e) => { setRegisteredData({ ...registeredData, email: e.target.value }) }}
           />
         </div>
         <div className="flex flex-col items-start gap-2">
-          <p>Password</p>
+          <p className={ubuntu.className+' text-xl'}>Password</p>
           <input
-           type="password" 
-           className="bg-black outline-none my-borderCol rounded-md p-1" 
-           autoComplete="current-password" 
-           onChange={(e) => { setRegisteredData({ ...registeredData, password: e.target.value })}} 
+            type="password"
+            className="bg-black outline-none my-borderCol rounded-md p-1"
+            autoComplete="current-password"
+            onChange={(e) => { setRegisteredData({ ...registeredData, password: e.target.value }) }}
           />
         </div>
         <div className="flex flex-row justify-end w-full">
-          <button className="px-4 py-1" onClick={handleRegister}>
-            <PlayIcon className="text-gray-900 dark:text-gray-100" />
+          <button className="px-5 py-2 my-borderCol rounded-lg" onClick={handleRegister} >
+            <PlayIcon color="#9C50B6" />
           </button>
         </div>
       </div>
+      <p className={ubuntu.className}>already registered?<span className="cursor-pointer auth-header text-xl text-violet-600" onClick={() => router.push('/login')} > Login</span> here!</p>
     </div>
+    </>
   )
 }
-
 function PlayIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
