@@ -11,7 +11,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div >
+      <div>
         <section className="banner">
           <div className="banner-content">
             <h2>VJTI Socials,An Anonymous forum</h2>
@@ -30,9 +30,7 @@ export default function Home() {
           
           <p className="F-content">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
+            labore eius cum perferendis 
           </p>
           
           
@@ -43,11 +41,9 @@ export default function Home() {
                 <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
           
           
-          <p className="F-content">
+         <p className="F-content">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
+            labore eius cum perferendis 
           </p>
           
           
@@ -58,13 +54,12 @@ export default function Home() {
                 <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
           
           
-          <p className="F-content">
+         <p className="F-content">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
+            labore eius cum perferendis 
           </p>
-
+          
+          
         </section>
         </div>
         <div className="pan">
@@ -72,11 +67,9 @@ export default function Home() {
                 <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png" />
           
           
-          <p className="F-content">
+         <p className="F-content">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-            labore eius cum perferendis consectetur culpa laboriosam quam, sed
-            ea nihil, suscipit, quidem est expedita. Nihil enim obcaecati
-            deleniti eaque sed.
+            labore eius cum perferendis 
           </p>
           
           
