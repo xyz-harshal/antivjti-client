@@ -7,8 +7,8 @@ import { useEventsPost } from "./usePostEvent";
 export let useReplies = (params: any) => {
   let { didLoad } = useEventsPost()
   let [specficEventData, setSpecificEventData] = useState<specificEventDataType>();
-  let [voteData, setVoteData] = useState([]);
-  let [rvoteData, setRVoteData] = useState([]);
+  let [voteData, setVoteData] = useState<any>([]);
+  let [rvoteData, setRVoteData] = useState<any>([]);
   let [allReplyData, setAllReplyData] = useState<replyDataType[]>()
   let [isLoading, setIsLoading] = useState<boolean>()
   let fetchRepliesData = async () => {
