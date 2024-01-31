@@ -66,6 +66,7 @@ export default function Register() {
 
   return (
     <>
+
       <Navbar />
       <div className="flex flex-col gap-2 items-center justify-center mt-56">
         <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-8 gap-6">
@@ -128,6 +129,7 @@ export default function Register() {
               <PlayIcon sendMail={sendMail} color="#9C50B6" />
             </button>
           </div>
+
         </div>
         {isLoading ? <BarLoader color="#36d7b7" width={310} /> : null}
         <p className={ubuntu.className}>
