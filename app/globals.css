@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.rem-inp-arr::-webkit-outer-spin-button,
+.rem-inp-arr::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -19,27 +27,28 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
-.my-borderCol{
+
+.my-borderCol {
   border: 1px solid rgba(255, 255, 255, 0.140);
-  }
-.post-input{
-    border-bottom: 1px solid rgba(255, 255, 255, 0.125) ;
 }
-.postTag{
+
+.post-input {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.postTag {
   text-overflow: unset;
   word-wrap: break-word;
 }
 
-.auth-header{
+.auth-header {
   font-family: 'Work Sans', sans-serif;
 }
-.nav-text-font{
+
+.nav-text-font {
   font-family: 'PT Serif', serif;
 }
