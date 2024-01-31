@@ -78,10 +78,8 @@ let PostEvents: FC<incProp> = ({ userId, postId, reply }) => {
           className="bg-black outline-none resize-none w-full post-input my-6 overflow-y-hidden"
           placeholder="Tell us what happend today!"
         />
-        <div>
-          <img src={eventData.img} alt="" />
-        </div>
-        <p>{imgSizeWarn ? "image size should not exceed 1MB" : ""}</p>
+        {eventData.img?<div><img src={eventData.img} alt="" /></div>:null}
+        {imgSizeWarn?<p>image size should not exceed 1MB</p>:null}
         <div className="flex flex-row justify-between w-full">
           <label className="p-3 rounded-lg my-borderCol text-base outline-none hover:bg-white hover:text-black cursor-pointer" htmlFor="uploadFile" >
             <MdOutlineFileUpload size={'2rem'} />
