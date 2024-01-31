@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { useRegister } from "@/hooks/useRegister";
-import { credDataType } from "@/types/types";
+import { credDataType, svgproptype } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { BarLoader } from "react-spinners";
 import Navbar from "@/app/components/navbar";
@@ -145,7 +145,7 @@ export default function Register() {
     </>
   );
 }
-function PlayIcon(props) {
+function PlayIcon(props: svgproptype) {
   return (
     <div className="flex justify-center items-centre">
       {!props.sendMail? <small className="m-1">send otp</small>:null}
