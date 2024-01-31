@@ -5,9 +5,13 @@ export type credDataType = {
 }
 export type loginErrorType = {
     email: boolean,
-    password: boolean
+    password: boolean,
+    vjti:boolean
 }
-
+export type registerErrorType={
+    error:boolean,
+    vjti:boolean
+}
 export type tweetsMapDataType = {
     _id: string,
     userID: string,

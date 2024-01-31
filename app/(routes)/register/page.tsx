@@ -28,8 +28,9 @@ export default function Register() {
       <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-8 gap-6">
         <h2 className="auth-header text-5xl text-violet-600">Register</h2>
         <div className="flex flex-col items-start gap-2 ">
+          {error.vjti?<p>Enter your valid VJTI email ID</p>:''}
           <p className={ubuntu.className+' text-xl'}>Email</p>
-          <p className={ubuntu.className}>{error ? "email already exist" : null}</p>
+          <p className={ubuntu.className}>{error.error ? "email already exist" : null}</p>
           <input
             type="email"
             className="bg-black outline-none my-borderCol rounded-md p-1"
