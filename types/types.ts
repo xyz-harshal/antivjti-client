@@ -1,7 +1,8 @@
 import mongoose from "mongoose"
 export type credDataType = {
     email: string,
-    password: string
+    password: string,
+    otp:string[]
 }
 export type loginErrorType = {
     email: boolean,

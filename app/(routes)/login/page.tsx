@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { useLogin } from "@/hooks/useLogin"
-import { credDataType } from "@/types/types"
+import {credDataType} from "@/types/types"
 import Navbar from "@/app/components/navbar"
 import { BarLoader } from "react-spinners"
 import { useRouter } from "next/navigation"
@@ -16,7 +16,8 @@ export default function Login() {
   let router = useRouter()
   let [loginData, setLoginData] = useState<credDataType>({
     email: "",
-    password: ""
+    password: "",
+    otp: ["", "", "", "", "", ""],
   })
   let handleLogin = () => {
     handleLoginData(loginData)

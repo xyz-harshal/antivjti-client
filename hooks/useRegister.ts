@@ -15,7 +15,7 @@ export let useRegister = () => {
             setIsLoading(true);
             if (registeredData.email.endsWith('.vjti.ac.in')) {
                 let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/register`, registeredData)
-                res.data.error ? setError({error:true,vjti:false}) : setError({error:true,vjti:false})
+                res.data.error ? setError({error:true,vjti:false}) : setError({error:false,vjti:false})
                 if (res.data.error == false) {
                     Cookies.set('user', res.data.token)
                     router.push('/timeline')

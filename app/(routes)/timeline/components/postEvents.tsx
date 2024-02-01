@@ -84,7 +84,7 @@ let PostEvents: FC<incProp> = ({ userId, postId, reply }) => {
           <label className="p-3 rounded-lg my-borderCol text-base outline-none hover:bg-white hover:text-black cursor-pointer" htmlFor="uploadFile" >
             <MdOutlineFileUpload size={'2rem'} />
           </label>
-          <button className="my-borderCol px-4 py-1 rounded-xl hover:bg-white hover:text-black" disabled={isPost ?false  : true} onClick={PostEvent}>{reply ? "Reply" : "Post"}</button>
+          <button className={"my-borderCol px-4 py-1 rounded-xl hover:bg-white hover:text-black"} disabled={isPost ?false  : true} onClick={PostEvent}>{reply ? "Reply" : "Post"}</button>
         </div>
       </div>
       <input
