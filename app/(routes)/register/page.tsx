@@ -64,8 +64,8 @@ export default function Register() {
             </div>
           ) : null}
           <div className="flex flex-row justify-center w-full">
-            <button className="px-5 py-2 my-borderCol rounded-lg flex flex-row justify-center w-full" onClick={handleRegister}>
-              {!sendMail ?<p>send otp</p>:<p>submit</p>}
+            <button className="px-5 py-2 my-borderCol rounded-lg flex flex-row justify-center w-full bg-white text-black hover:bg-black hover:text-white" onClick={handleRegister}>
+              {!sendMail ?"Send Otp":"Submit"}
             </button>
           </div>
         </div>

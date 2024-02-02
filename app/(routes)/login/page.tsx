@@ -49,9 +49,9 @@ export default function Login() {
               onChange={(e) => { setLoginData({ ...loginData, password: e.target.value }) }}
             />
           </div>
-          <div className="flex flex-row justify-end w-full">
-            <button className="px-5 py-2 my-borderCol rounded-lg" onClick={handleLogin}>
-              <PlayIcon color="#9C50B6" />
+          <div className="flex flex-row justify-center w-full">
+            <button className=" flex flex-row justify-center w-full px-5 py-2 my-borderCol bg-white text-black rounded-lg hover:bg-black hover:text-white" onClick={handleLogin}>
+              Submit
             </button>
           </div>
         </div>
@@ -59,24 +59,5 @@ export default function Login() {
         <p className={ubuntu.className}>are you new?<span className="cursor-pointer auth-header text-xl text-violet-600" onClick={() => router.push('/register')} > Register</span> here!</p>
       </div>
     </>
-  )
-}
-
-function PlayIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="5 3 19 12 5 21 5 3" />
-    </svg>
   )
 }
