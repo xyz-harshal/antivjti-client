@@ -1,13 +1,15 @@
 "use client"
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import "./tailwind.css";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
+import Cookies from "js-cookie";
 export default function Home() {
   let router = useRouter()
-  let { authCheck } = useAuth()
+  let cookie = Cookies?.get('user')
+  let [auth,setAuth] = useState<boolean>()
   useEffect(() => {
-    authCheck()
+        if (cookie) setAuth(true)
+        else setAuth(false)
   }, [])
   return (
     <>
@@ -15,10 +17,13 @@ export default function Home() {
         <section className="banner">
           <div className="banner-content">
             <h2>ANTI VJTI,AN ANONYMOUS FORUM</h2>
-            <div className="buttons">
+            {!auth?<div className="buttons">
               <button className='LPbutton' onClick={() => router.push('/register')} >Register</button>
               <button className='LPbutton' onClick={() => router.push('/login')}>Login</button>
-            </div>
+            </div>:
+            <div className="buttons">
+              <button className='LPbutton' onClick={() => router.push('/timeline')}>Join The Convo</button>
+            </div>}
           </div>
         </section>
 

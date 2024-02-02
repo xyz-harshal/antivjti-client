@@ -1,5 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+import { useAuth } from "@/hooks/useAuth"
 import { BarLoader } from "react-spinners"
 import Navbar from "@/app/components/navbar"
 import { Ubuntu } from "next/font/google"
@@ -12,7 +14,11 @@ const ubuntu = Ubuntu({
 
 export default function Register() {
   let router = useRouter()
+  let {authCheck} = useAuth()
   let { sendMail, recivedOTP, isLoading, error, registeredData, otpInputsRef, setRegisteredData, handleOnChange, handleRegister } = useOtp();
+  useEffect(()=>{
+    authCheck()
+  },[])
   return (
     <>
       <Navbar />

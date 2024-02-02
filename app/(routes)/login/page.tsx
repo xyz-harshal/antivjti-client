@@ -1,11 +1,12 @@
 "use client"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { useLogin } from "@/hooks/useLogin"
 import {credDataType} from "@/types/types"
 import Navbar from "@/app/components/navbar"
 import { BarLoader } from "react-spinners"
 import { useRouter } from "next/navigation"
 import { Ubuntu } from "next/font/google"
+import { useAuth } from "@/hooks/useAuth"
 const ubuntu = Ubuntu({
   weight: '400',
   subsets: ['latin'],
@@ -13,6 +14,7 @@ const ubuntu = Ubuntu({
 })
 export default function Login() {
   let { handleLoginData, error,isLoading } = useLogin()
+  let {authCheck} = useAuth()
   let router = useRouter()
   let [loginData, setLoginData] = useState<credDataType>({
     email: "",
@@ -22,6 +24,9 @@ export default function Login() {
   let handleLogin = () => {
     handleLoginData(loginData)
   }
+  useEffect(()=>{
+    authCheck()
+  },[])
   return (
     <>
       <Navbar />

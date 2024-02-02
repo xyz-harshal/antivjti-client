@@ -6,7 +6,6 @@ export let useAuth = () => {
     let cookie = Cookies?.get('user')
     let authCheck = async () => {
         if (cookie) router.push('/timeline')
-        else router.push('/')
     }
     return { authCheck }
 }
