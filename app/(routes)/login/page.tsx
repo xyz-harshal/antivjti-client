@@ -32,7 +32,7 @@ export default function Login() {
       <Navbar />
       <div className="flex flex-col gap-2 items-center justify-center mt-56 ">
         <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-8 gap-6">
-          <p className="auth-header text-5xl text-violet-600">Login</p>
+          <p className="auth-header text-4xl ">Login</p>
           <div className="flex flex-col items-start gap-2">
             {error.vjti?<p>Input your VJTI email ID</p>:""}
             <p className={ubuntu.className + ' text-xl'} >Email</p>

@@ -14,17 +14,17 @@ const ubuntu = Ubuntu({
 
 export default function Register() {
   let router = useRouter()
-  let {authCheck} = useAuth()
+  let { authCheck } = useAuth()
   let { sendMail, recivedOTP, isLoading, error, registeredData, otpInputsRef, setRegisteredData, handleOnChange, handleRegister } = useOtp();
-  useEffect(()=>{
+  useEffect(() => {
     authCheck()
-  },[])
+  }, [])
   return (
     <>
       <Navbar />
       <div className="flex flex-col gap-2 items-center justify-center mt-56">
         <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-6 gap-6">
-          <h2 className="auth-header text-5xl text-violet-600">Register</h2>
+          <h2 className="auth-header text-4xl">Register</h2>
           <div className="flex flex-col items-start gap-2 ">
             <p className={ubuntu.className + " text-xl"}>Email</p>
             {recivedOTP == -1 ? <p className={ubuntu.className}>OTP incorrect Please try again</p> : null}
@@ -71,7 +71,7 @@ export default function Register() {
           ) : null}
           <div className="flex flex-row justify-center w-full">
             <button className="px-5 py-2 my-borderCol rounded-lg flex flex-row justify-center w-full bg-white text-black hover:bg-black hover:text-white" onClick={handleRegister}>
-              {!sendMail ?"Send Otp":"Submit"}
+              {!sendMail ? "Send Otp" : "Submit"}
             </button>
           </div>
         </div>
