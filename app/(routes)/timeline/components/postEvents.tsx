@@ -27,8 +27,7 @@ let PostEvents: FC<incProp> = ({ userId, postId, reply }) => {
     userId: userId,
     postId: postId,
     reply: "",
-    img: "",
-    writterId: cookie
+    img: ""
   })
   let [isPost, setIsPost] = useState<boolean>(false)
   //THIS IS WHERE ALL THE DATA FROM THE USER IS STORED IN STATES

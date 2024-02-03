@@ -11,21 +11,23 @@ export let useReplies = (params: any) => {
   let [rvoteData, setRVoteData] = useState<any>([]);
   let [allReplyData, setAllReplyData] = useState<replyDataType[]>()
   let [isLoading, setIsLoading] = useState<boolean>()
+  let headers = {
+    'Content-Type': 'application/json',
+    'Authorization': Cookies?.get('user'),
+  }
   let fetchRepliesData = async () => {
     try {
       setIsLoading(true)
-      await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/getSpecificTweet`, {
-        _id: params._id, userID: Cookies.get("user")
-      }).then((res) => {
-        setSpecificEventData(res.data.data);
-        setVoteData(res.data.voteData);
-      })
-      await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/getReplies`, {
-        _id: params._id, userID: Cookies.get("user")
-      }).then((res) => {
-        setAllReplyData(res.data.response);
-        setRVoteData(res.data.voteData);
-      })
+      await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/getSpecificEvent`, {_id: params._id}, { headers })
+        .then((res) => {
+          setSpecificEventData(res.data.data);
+          setVoteData(res.data.voteData);
+        })
+      await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/getReplies`, {_id: params._id},{headers})
+        .then((res) => {
+          setAllReplyData(res.data.response);
+          setRVoteData(res.data.voteData);
+        })
     } catch (e: any) {
       console.log(e.message)
     }

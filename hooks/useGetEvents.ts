@@ -20,7 +20,7 @@ export let useGetEvents = () => {
         try {
             setIsLoading(true)
             if (cookie) {
-                let res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getTweets`,{headers});
+                let res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getEvents`,{headers});
                 setIncData(res.data.data);
                 setVoteData(res.data.voteData);
             }

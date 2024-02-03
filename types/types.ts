@@ -33,8 +33,7 @@ export type replyPostDataType = {
     userId: any,
     postId: any,
     reply: string,
-    img: any,
-    writterId: any
+    img: any
 }
 export interface readEventPropType {
     username: string | undefined;
