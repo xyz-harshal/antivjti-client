@@ -68,20 +68,20 @@ let PostEvents: FC<incProp> = ({ userId, postId, reply }) => {
   }
   return (
     <div className="postTweet flex flex-col items-center px-0 sm:px-6 md:px-12 lg:px-24 xl:px-36 2xl:px-44">
-      <div className="flex flex-col items-center gap-4 my-borderCol px-8 py-4 w-full">
+      <div className="flex flex-col items-center gap-4 my-borderCol px-6 py-4 w-full">
         <textarea
           required={true}
           value={eventData.post}
           onChange={InputChange}
           style={{ height: textareaHeight }}
-          className="bg-black outline-none resize-none w-full post-input my-6 overflow-y-hidden"
-          placeholder="Tell us what happend today!"
+          className="bg-black outline-none resize-none w-full post-input my-5 overflow-y-hidden"
+          placeholder={reply?"Reply to this dude":"Tell us what happend today!"}
         />
-        {eventData.img?<div><img src={eventData.img} alt="" /></div>:null}
+        {eventData.img?<div><img src={eventData.img} alt="" className="rounded-lg" /></div>:null}
         {imgSizeWarn?<p>image size should not exceed 1MB</p>:null}
         <div className="flex flex-row justify-between w-full">
-          <label className="p-3 rounded-lg my-borderCol text-base outline-none hover:bg-white hover:text-black cursor-pointer" htmlFor="uploadFile" >
-            <MdOutlineFileUpload size={'2rem'} />
+          <label className="p-2 rounded-lg my-borderCol text-base outline-none hover:bg-white hover:text-black cursor-pointer" htmlFor="uploadFile" >
+            <MdOutlineFileUpload size={'1.8rem'} />
           </label>
           <button className={"my-borderCol px-4 py-1 rounded-xl hover:bg-white hover:text-black"} disabled={isPost ?false  : true} onClick={PostEvent}>{reply ? "Reply" : "Post"}</button>
         </div>

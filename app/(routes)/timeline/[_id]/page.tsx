@@ -6,19 +6,20 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useReplies } from "@/hooks/useReplies";
 import LoaderSpinner from "@/app/components/loader";
+import TimelineNav from "../components/timelineNav";
 
 export default function Page({ params }: { params: { _id: string } }) {
   let selector = useSelector((state: RootState) => state.toggle2.value)
-  let { specficEventData, allReplyData, isLoading, fetchRepliesData,didLoad, rvoteData, voteData } = useReplies(params)
+  let { specficEventData, allReplyData, isLoading, fetchRepliesData, didLoad, rvoteData, voteData } = useReplies(params)
   useEffect(() => {
     fetchRepliesData()
   }, [selector])
   return (
     <div className="mx-0 sm:mx-0 md:mx-28 lg:mx-48 xl:mx-72 2xl:mx-96">
       {isLoading || didLoad ?
-      <LoaderSpinner />
-      :
+        <LoaderSpinner />:
         <>
+        <TimelineNav />
           <ReadEvents
             replies={specficEventData?.replies.length}
             upvoteIds={specficEventData?.upvoteIds}
@@ -35,6 +36,7 @@ export default function Page({ params }: { params: { _id: string } }) {
           <PostEvents userId={specficEventData?.userID} postId={specficEventData?._id} reply={true} />
           {allReplyData?.map((e, n) => (
             <ReadEvents
+              key={n}
               username={e.writterName}
               post={e.reply}
               replies={0}
@@ -45,12 +47,11 @@ export default function Page({ params }: { params: { _id: string } }) {
               downvoteIds={e?.downvoteIds}
               isReply={true}
               voteData={rvoteData[n]}
-              key={n}
               createdAt={e.date}
             />
           ))}
-        </> 
-        }
+        </>
+      }
     </div>
   );
 }
