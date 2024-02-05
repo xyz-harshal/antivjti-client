@@ -18,8 +18,7 @@ export default function Login() {
   let router = useRouter()
   let [loginData, setLoginData] = useState<credDataType>({
     email: "",
-    password: "",
-    otp: ["", "", "", "", "", ""],
+    password: ""
   })
   let handleLogin = () => {
     handleLoginData(loginData)
