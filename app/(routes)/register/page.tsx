@@ -5,7 +5,9 @@ import { useAuth } from "@/hooks/useAuth"
 import { BarLoader } from "react-spinners"
 import Navbar from "@/app/components/navbar"
 import { Ubuntu } from "next/font/google"
-import { useOtp } from "@/hooks/useOpt"
+import { useState } from "react";
+import { useRegister } from "@/hooks/useRegister";
+import { credDataType } from "@/types/types";
 const ubuntu = Ubuntu({
   weight: "400",
   subsets: ["latin"],
@@ -13,22 +15,32 @@ const ubuntu = Ubuntu({
 })
 
 export default function Register() {
+  let { handleVerifyData,handleRegisterdData, error, isLoading,isVerify } = useRegister()
+  let [registeredData, setRegisteredData] = useState<credDataType>({
+    email: "",
+    password: "",
+  })
+  let [otp, setOtp] = useState<number>()
   let router = useRouter()
   let { authCheck } = useAuth()
-  let { sendMail, recivedOTP, isLoading, error, registeredData, otpInputsRef, setRegisteredData, handleOnChange, handleRegister } = useOtp();
   useEffect(() => {
     authCheck()
   }, [])
+  let handleVerify = () => {
+    handleVerifyData(registeredData)
+  }
+  let handleRegister = () => {
+    handleRegisterdData(otp,registeredData)
+  }
   return (
     <>
       <Navbar />
       <div className="flex flex-col gap-2 items-center justify-center mt-56">
         <div className="flex flex-col items-center my-borderCol rounded-lg shadow-lg overflow-hidden p-6 gap-6">
           <h2 className="auth-header text-4xl">Register</h2>
-          <div className="flex flex-col items-start gap-2 ">
+          <div className={isVerify?"hidden":"flex flex-col items-start gap-2 "}>
             <p className={ubuntu.className + " text-xl"}>Email</p>
-            {recivedOTP == -1 ? <p className={ubuntu.className}>OTP incorrect Please try again</p> : null}
-            {error.error ? <p className={ubuntu.className} >email already exist</p> : null}
+            {error.mail ? <p className={ubuntu.className} >email already exist</p> : null}
             {error.vjti ? <p className={ubuntu.className} >vjti email only</p> : null}
             <input
               type="email"
@@ -39,7 +51,7 @@ export default function Register() {
               }}
             />
           </div>
-          <div className="flex flex-col items-start gap-2">
+          <div className={isVerify?"hidden":"flex flex-col items-start gap-2"}>
             <p className={ubuntu.className + " text-xl"}>Password</p>
             <input
               type="password"
@@ -50,28 +62,20 @@ export default function Register() {
               }}
             />
           </div>
-          {sendMail ? (
-            <div className="otp-form">
-              <div className="otp-container  background-black text-white flex justify-center mt-5">
-                {registeredData.otp.map((_, index) => {
-                  return (
-                    <div key={index}>
-                      <input
-                        type="number"
-                        className="bg-black my-borderCol spin-button-none outline-none w-10 h-10 text-center text-lg rounded m-1"
-                        maxLength={1}
-                        onChange={(e) => handleOnChange(e, index)}
-                        ref={(el) => (otpInputsRef.current[index] = el)}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          ) : null}
+          <div className={isVerify?"flex flex-col items-start gap-2":"hidden"}>
+            <p className={ubuntu.className + " text-xl"}>OTP</p>
+            {error.otp ? <p className={ubuntu.className} >Invalid OTP</p> : null}
+            <input
+              type="text"
+              placeholder="* * * * * *"
+              className="bg-black outline-none my-borderCol rounded-md p-1"
+              maxLength={6}
+              onChange={(e) => { setOtp(Number(e.target.value)) }}
+            />
+          </div>
           <div className="flex flex-row justify-center w-full">
-            <button className="px-5 py-2 my-borderCol rounded-lg flex flex-row justify-center w-full bg-white text-black hover:bg-black hover:text-white" onClick={handleRegister}>
-              {!sendMail ? "Send Otp" : "Submit"}
+            <button className="px-5 py-2 my-borderCol rounded-lg flex flex-row justify-center w-full bg-white text-black hover:bg-black hover:text-white" onClick={isVerify?handleRegister:handleVerify}>
+              {isVerify?"Register":"verify"}
             </button>
           </div>
         </div>

@@ -1,8 +1,7 @@
 import mongoose from "mongoose"
 export type credDataType = {
     email: string,
-    password: string,
-    otp:string[]
+    password: string
 }
 export type loginErrorType = {
     email: boolean,
@@ -10,8 +9,9 @@ export type loginErrorType = {
     vjti:boolean
 }
 export type registerErrorType={
-    error:boolean,
-    vjti:boolean
+    mail:boolean,
+    vjti:boolean,
+    otp:boolean
 }
 export type tweetsMapDataType = {
     _id: string,

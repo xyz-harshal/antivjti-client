@@ -26,15 +26,15 @@ export let useEventsPost = () => {
         try {
             setDidLoad(true)
             await axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/' + link, postData, { headers })
-            setTimeout(() => {
-                dispatch(counter())
-            }, 500)
             setTextareaHeight(40)
         }
         catch (e: any) {
             console.log(e.message);
         }
         finally {
+            setTimeout(() => {
+                dispatch(counter())
+            }, 500)
             setDidLoad(false)
         }
     }
