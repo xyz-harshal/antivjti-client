@@ -7,6 +7,7 @@ export function useGetUsername() {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': Cookies?.get('user'),
+        'Key': process.env.NEXT_PUBLIC_KEY,
     }
     let handleGetUsername = async () => {
         try {

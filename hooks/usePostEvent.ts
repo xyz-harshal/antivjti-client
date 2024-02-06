@@ -21,6 +21,7 @@ export let useEventsPost = () => {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': Cookies?.get('user'),
+        'Key': process.env.NEXT_PUBLIC_KEY,
     }
     let handlePost = async (postData: postEventDataType | replyPostDataType | undefined, counter: any, link: string) => {
         try {

@@ -15,6 +15,7 @@ export let useGetEvents = () => {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': cookie,
+        'Key': process.env.NEXT_PUBLIC_KEY
     }
     let handleGet = async () => {
         try {

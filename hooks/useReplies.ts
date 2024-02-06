@@ -14,6 +14,7 @@ export let useReplies = (params: any) => {
   let headers = {
     'Content-Type': 'application/json',
     'Authorization': Cookies?.get('user'),
+    'Key': process.env.NEXT_PUBLIC_KEY,
   }
   let fetchRepliesData = async () => {
     try {

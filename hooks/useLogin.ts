@@ -12,11 +12,15 @@ export let useLogin = () => {
         vjti:null
     })
     let [isLoading, setIsLoading] = useState<boolean>(false)
+    let headers = {
+        'Content-Type': 'application/json',
+        'Key': process.env.NEXT_PUBLIC_KEY,
+    }
     let handleLoginData = async (loginData: credDataType) => {
         try {
             setIsLoading(true);
             if (loginData.email.endsWith('.vjti.ac.in')) {
-                let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, loginData)
+                let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`,loginData,{headers})
                 setError({...res.data.error,vjti:false});
                 if (res.data.error.email == true && res.data.error.password == true) {
                     Cookies.set("user", res.data.token);
