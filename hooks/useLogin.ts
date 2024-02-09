@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { credDataType,loginErrorType } from "@/types/types"
 import axios from "axios"
-
+import { env } from "@/app/env.mjs"
 export let useLogin = () => {
     let router = useRouter()
     let [error, setError] = useState<loginErrorType | any>({
@@ -14,7 +14,7 @@ export let useLogin = () => {
     let [isLoading, setIsLoading] = useState<boolean>(false)
     let headers = {
         'Content-Type': 'application/json',
-        'Key': process.env.NEXT_PUBLIC_KEY,
+        'Key': env.NEXT_PUBLIC_KEY,
     }
     let handleLoginData = async (loginData: credDataType) => {
         try {

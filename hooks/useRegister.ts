@@ -15,7 +15,7 @@ export let useRegister = () => {
     })
     let headers = {
         'Content-Type': 'application/json',
-        'Key': process.env.NEXT_PUBLIC_KEY,
+        'Key': process.env.KEY,
     }
     let handleVerifyData = async (registeredData: credDataType) => {
         try {
