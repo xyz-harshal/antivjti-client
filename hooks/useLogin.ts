@@ -23,7 +23,7 @@ export let useLogin = () => {
                 let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`,loginData,{headers})
                 setError({...res.data.error,vjti:false});
                 if (res.data.error.email == true && res.data.error.password == true) {
-                    Cookies.set("user", res.data.token);
+                    Cookies.set("user", res.data.token,{expires:7});
                     router.push('/timeline');
                 }
                 else {

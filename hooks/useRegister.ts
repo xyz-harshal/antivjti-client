@@ -44,7 +44,7 @@ export let useRegister = () => {
             setIsLoading(true)
             let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/register`,{...registeredData, incOtp, userOtp},{headers})
             if (res.data.error == false) {
-                Cookies.set('user', res.data.token)
+                Cookies.set('user', res.data.token,{expires:7})
                 router.push('/timeline')
             }
             else {
