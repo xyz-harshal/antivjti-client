@@ -30,8 +30,8 @@ export default function Home() {
           <p className="text-xl mt-2" >Only for the peps of VJTI</p>
         </div>
         <div className={inter.className+" flex flex-col justify-center items-center py-4 gap-6"}>
-          <button className="bg-black text-white hover:bg-white my-borderCol hover:text-black px-4 py-2 rounded-md px-28 w-full text-xl" onClick={()=>router.push('/register')}>Register</button>
-          <button className="bg-black text-white hover:bg-white my-borderCol hover:text-black px-4 py-2 rounded-md px-28 w-full text-xl" onClick={()=>router.push('/login')}>Login</button>
+          <button className="bg-black text-white hover:bg-white my-borderCol hover:text-black py-2 rounded-md px-28 w-full text-xl" onClick={()=>router.push('/register')}>Register</button>
+          <button className="bg-black text-white hover:bg-white my-borderCol hover:text-black py-2 rounded-md px-28 w-full text-xl" onClick={()=>router.push('/login')}>Login</button>
         </div>
       </div>
     </div>
