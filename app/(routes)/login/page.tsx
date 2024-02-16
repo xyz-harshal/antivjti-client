@@ -5,12 +5,17 @@ import {credDataType} from "@/types/types"
 import Navbar from "@/app/components/navbar"
 import { BarLoader } from "react-spinners"
 import { useRouter } from "next/navigation"
-import { Ubuntu } from "next/font/google"
+import { Ubuntu ,Inter, Lato,Mukta} from "next/font/google"
 import { useAuth } from "@/hooks/useAuth"
 const ubuntu = Ubuntu({
   weight: '400',
   subsets: ['latin'],
   display: 'swap',
+})
+const mukta=Mukta({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '500',
 })
 export default function Login() {
   let { handleLoginData, error,isLoading } = useLogin()
@@ -54,7 +59,7 @@ export default function Login() {
             />
           </div>
           <div className="flex flex-row justify-center w-full">
-            <button className=" flex flex-row justify-center w-full px-5 py-2 my-borderCol bg-white text-black rounded-lg hover:bg-black hover:text-white" onClick={handleLogin}>
+            <button className={mukta.className+" flex flex-row justify-center w-full px-5 py-2 my-borderCol home-btn rounded-lg text-xl"} onClick={handleLogin}>
               Submit
             </button>
           </div>

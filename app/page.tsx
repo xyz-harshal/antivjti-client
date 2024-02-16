@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useAuth } from "@/hooks/useAuth"
 import Navbar from "./components/navbar"
 import { data } from "./data"
-import { Inter, Lato,Ubuntu,Mukta } from "next/font/google"
+import { Inter, Lato,Mukta } from "next/font/google"
 import Image from 'next/image'
 const inter = Inter({
   subsets: ['latin'],
@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <Navbar />
-      <div className="flex flex-row justify-center border-b border-gray-500 py-56 md:py-72">
+      <div className="flex flex-row justify-center border-b border-gray-500 py-48 md:py-72">
         <div className="brag flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-28 my-borderCol mx-4 md:mx-0 p-4 md:p-12 rounded-xl">
           <div className={lato.className + " flex flex-col items-center lg:items-start"}>
             <p className="text-3xl lg:text-4xl font-bold">Welcome to Anti-VJTI</p>
