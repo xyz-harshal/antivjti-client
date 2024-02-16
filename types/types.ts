@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import { StaticImageData } from "next/image"
 export type credDataType = {
     email: string,
     password: string
@@ -72,3 +73,9 @@ export type specificEventDataType = {
     downvoteIds: [mongoose.Schema.Types.ObjectId] | undefined;
     date: Date | any
 };
+export type homePageDataType = {
+    img: StaticImageData,
+    p1: string,
+    p2: string,
+    p3: string
+}

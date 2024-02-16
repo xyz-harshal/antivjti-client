@@ -1,4 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=PT+Serif@1&family=Work+Sans:wght@500&display=swap'); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,4 +18,19 @@ body {
 .postTag {
   text-overflow: unset;
   word-wrap: break-word;
+}
+.brag{
+  transition: transform 0.3s ease;
+}
+.brag:hover{
+  transform: scale(1.01);
+}
+.home-btn{
+  color: black;
+  background-color: white;
+  transition: 0.3s ease-in-out;
+}
+.home-btn:hover{
+  color: white;
+  background-color: black;
 }
