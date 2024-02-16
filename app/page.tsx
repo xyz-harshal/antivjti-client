@@ -31,11 +31,11 @@ export default function Home() {
     <div className="flex flex-col">
       <Navbar />
       <div className="flex flex-row justify-center border-b border-gray-500 py-48 md:py-72">
-        <div className="brag flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-28 my-borderCol mx-4 md:mx-0 p-4 md:p-12 rounded-xl">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-28 my-borderCol mx-4 md:mx-0 p-4 md:p-12 rounded-xl">
           <div className={lato.className + " flex flex-col items-center lg:items-start"}>
-            <p className="text-3xl lg:text-4xl font-bold">Welcome to Anti-VJTI</p>
-            <p className="text-xl lg:text-xl mt-4">A platform to post anonymously</p>
-            <p className="text-xl lg:text-xl mt-4">Only for the peeps of VJTI</p>
+            <p className="text-3xl lg:text-4xl font-bold">Welcome to Anti VJTI</p>
+            <p className="text-xl lg:text-xl mt-4">A platform to post anything anonymously</p>
+            <p className="text-xl lg:text-xl mt-4">Exclusively for the Students of VJTI</p>
           </div>
           <div className={inter.className + " flex flex-col justify-center items-center py-4 gap-6"}>
             <button className={mukta.className+" home-btn my-borderCol py-2 rounded-md px-28 w-full text-xl"} onClick={() => router.push('/register')}>Register</button>
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center py-16 text-white gap-16 border-b border-gray-500 mx-4">
-        <p className={lato.className + " text-4xl font-bold"}>I mean i wont brag but, It is what it is</p>
+        <p className={lato.className + " text-4xl font-bold"}>I won't brag but It is what it is</p>
         {data.map((i, n) => {
           return (
             <div key={n} className="flex flex-col justify-center items-center gap-8 brag">
@@ -60,8 +60,9 @@ export default function Home() {
           )
         })}
       </div>
-      <div className="flex flex-row justify-center py-4 text-gray-400">
+      <div className="flex flex-col items-center justify-center py-4 text-gray-400">
         <p>© 2024 Chefs</p>
+        <p>Made with love by Soham Abhay Atharva Prathamesh Abhi and <a href="https://www.xyzharshal.social/" target='_blank'>sync</a> </p>
       </div>
     </div>
   )
