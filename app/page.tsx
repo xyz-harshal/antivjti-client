@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center py-16 text-white gap-16 border-b border-gray-500 mx-4">
-        <p className={lato.className + " text-4xl font-bold"}>I won't brag but It is what it is</p>
+        <p className={lato.className + " text-4xl font-bold"}>{"I won't brag but It is what it is"}</p>
         {data.map((i, n) => {
           return (
             <div key={n} className="flex flex-col justify-center items-center gap-8 brag">

@@ -30,7 +30,7 @@ export default function Login() {
   }
   useEffect(()=>{
     authCheck()
-  },[])
+  },[]);
   return (
     <>
       <Navbar />
