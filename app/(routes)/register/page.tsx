@@ -19,7 +19,7 @@ const mukta=Mukta({
   weight: '500',
 })
 export default function Register() {
-  let { handleVerifyData,handleRegisterdData, error, isLoading,isVerify } = useRegister()
+  let { handleVerifyData,handleRegisteredData, error, isLoading,isVerify } = useRegister()
   let [registeredData, setRegisteredData] = useState<credDataType>({
     email: "",
     password: "",
@@ -34,7 +34,7 @@ export default function Register() {
     handleVerifyData(registeredData)
   }
   let handleRegister = () => {
-    handleRegisterdData(otp,registeredData)
+    handleRegisteredData(otp,registeredData)
   }
   return (
     <>

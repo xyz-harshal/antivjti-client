@@ -35,7 +35,7 @@ export default function Home() {
           <div className={lato.className + " flex flex-col items-center lg:items-start"}>
             <p className="text-3xl lg:text-4xl font-bold">Welcome to Anti-VJTI</p>
             <p className="text-xl lg:text-xl mt-4">A platform to post anonymously</p>
-            <p className="text-xl lg:text-xl mt-4">Only for the peps of VJTI</p>
+            <p className="text-xl lg:text-xl mt-4">Only for the peeps of VJTI</p>
           </div>
           <div className={inter.className + " flex flex-col justify-center items-center py-4 gap-6"}>
             <button className={mukta.className+" home-btn my-borderCol py-2 rounded-md px-28 w-full text-xl"} onClick={() => router.push('/register')}>Register</button>

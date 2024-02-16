@@ -7,7 +7,7 @@ export let useRegister = () => {
     let router = useRouter();
     let [isVerify, setIsVerify] = useState<boolean>(false)
     let [isLoading, setIsLoading] = useState<boolean>(false)
-    let [incOtp, setIncOtp] = useState<string>()
+    let [hashed, setHashed] = useState<string>()
     let [error, setError] = useState<registerErrorType | any>({
         mail: null,
         vjti: null,
@@ -24,7 +24,7 @@ export let useRegister = () => {
                 let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/verify`,registeredData,{headers})
                 res.data.error ? setError({ mail: true, vjti: false, otp: null }) : setError({ mail: false, vjti: false, otp: null })
                 if (res.data.error == false) {
-                    setIncOtp(res.data.otp)
+                    setHashed(res.data.combinedHash)
                     setIsVerify(true)
                 }
             }
@@ -39,10 +39,10 @@ export let useRegister = () => {
             setIsLoading(false)
         }
     }
-    let handleRegisterdData = async (userOtp: number | undefined, registeredData: credDataType) => {
+    let handleRegisteredData = async (userOtp: number | undefined, registeredData: credDataType) => {
         try {
             setIsLoading(true)
-            let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/register`,{...registeredData, incOtp, userOtp},{headers})
+            let res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/register`,{...registeredData, hashed, userOtp},{headers})
             if (res.data.error == false) {
                 Cookies.set('user', res.data.token,{expires:7})
                 router.push('/timeline')
@@ -58,5 +58,5 @@ export let useRegister = () => {
             setIsLoading(false)
         }
     }
-    return { handleVerifyData, handleRegisterdData, error, isLoading, isVerify, setIsVerify }
+    return { handleVerifyData, handleRegisteredData, error, isLoading, isVerify, setIsVerify }
 }
