@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Cookies from "js-cookie"
 import axios from "axios"
+import { env } from "@/app/env.mjs"
 export function useGetUsername() {
     let [username, setUsername] = useState<string>('')
     let [isLoading, setIsLoading] = useState<boolean>(false)
@@ -11,7 +12,7 @@ export function useGetUsername() {
     let handleGetUsername = async () => {
         try {
             setIsLoading(true)
-            let res=await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getUsername`,{headers})
+            let res=await axios.get(`${env.NEXT_PUBLIC_SERVER_URL}/getUsername`,{headers})
             setUsername(res.data.username)
         }
         catch (e:any) {
