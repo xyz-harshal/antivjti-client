@@ -1,10 +1,9 @@
-import axios from "axios";
 import Cookies from "js-cookie"
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { tweetsMapDataType } from "@/types/types";
-import { useEventsPost } from "./usePostEvent";
-
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { tweetsMapDataType } from "@/types/types"
+import { useEventsPost } from "./usePostEvent"
+import { serverGet } from "@/server/server"
 export let useGetEvents = () => {
     let router = useRouter()
     let {didLoad}=useEventsPost()
@@ -12,20 +11,15 @@ export let useGetEvents = () => {
     let [isLoading,setIsLoading]=useState<boolean>()
     let [voteData, setVoteData] = useState([]);
     let cookie=Cookies?.get('user')
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': cookie,
-        'Key': process.env.NEXT_PUBLIC_KEY
-    }
     let handleGet = async () => {
         try {
             setIsLoading(true)
             if (cookie) {
-                let res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/getEvents`,{headers});
-                setIncData(res.data.data);
-                setVoteData(res.data.voteData);
+                let res=await serverGet('getEvents')
+                setIncData(res.data)
+                setVoteData(res.voteData)
             }
-            else router.push('/'); 
+            else router.push('/')
         }
         catch (e: any) {
             console.log(e.message)
